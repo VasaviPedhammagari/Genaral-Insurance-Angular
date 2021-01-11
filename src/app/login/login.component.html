@@ -1,6 +1,6 @@
 <div id="form">
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, login here!</h2>
-    <form [formGroup]="LoginForm" (ngSubmit)="login()">
+    <form [formGroup]="LoginForm" (ngSubmit)="loginCheck()">
 
         <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=user.email><br>
         <div class="text-danger" *ngIf="LoginForm.controls.email.touched && LoginForm.controls.email.hasError('required')">
