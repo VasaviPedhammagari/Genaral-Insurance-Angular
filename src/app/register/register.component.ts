@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
 
   RegForm:FormGroup;
   user:User = new User();
+  address:Address = new Address();
+  password2:string;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService) {
    }
@@ -29,7 +31,7 @@ export class RegisterComponent implements OnInit {
       pincode: ["",Validators.compose([Validators.required,Validators.pattern(/^\d{6}$/)])],
       password1: ["",Validators.compose([
           Validators.required,
-          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,12}')
+          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
          ])
       ],
       password2: ["",Validators.required]
@@ -38,8 +40,9 @@ export class RegisterComponent implements OnInit {
 
   register(){
     //console.log("Register function works!");
-    if(this.user.password1 == this.user.password2){
-      //alert(JSON.stringify(this.user));
+    if(this.user.password == this.password2){
+      console.log(this.password2);
+      alert(JSON.stringify(this.user));
       this.insuranceService.registerUser(this.user).subscribe(response => {
         alert(JSON.stringify(response));
     })
@@ -47,6 +50,12 @@ export class RegisterComponent implements OnInit {
     else{
       alert("Password mismatch!");
     }
-  }
-  
+  } 
+}
+export class Address{
+  addressId:number;
+	addressLine:string;
+	city:string;
+	pin:number;
+	state:number;
 }
