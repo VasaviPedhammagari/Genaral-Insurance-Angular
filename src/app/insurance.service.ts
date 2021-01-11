@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from './appmodel/login';
 import { User } from './appmodel/user';
+import { VehicleModel } from './appmodel/vehicleModel';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,19 @@ import { User } from './appmodel/user';
 export class InsuranceService {
 
   constructor(private http: HttpClient) { }
-  
-  registerUser(user: User) : Observable<any> {
+
+  registerUser(user: User): Observable<any> {
     let url = "http://localhost:8181/register";
-    return this.http.post(url, user);   
+    return this.http.post(url, user);
   }
-  login(login: Login) : Observable<any>{
+
+  login(login: Login): Observable<any> {
     let url = "http://localhost:8181/login";
-    return this.http.post(url, login);  
+    return this.http.post(url, login);
+  }
+
+  fetchVehicleModels(): Observable<VehicleModel[]> {
+    let url = "http://localhost:8181/fetchVehicleModel";
+    return this.http.get<VehicleModel[]>(url);
   }
 }

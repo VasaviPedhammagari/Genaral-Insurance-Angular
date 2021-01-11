@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
 import { HomeComponent } from './home/home.component';
+import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuyInsuranceComponent,
     routingComponents,
-    HomeComponent
+    HomeComponent,
+    PremiumCalulatorComponent
   ],
   imports: [
     BrowserModule,
