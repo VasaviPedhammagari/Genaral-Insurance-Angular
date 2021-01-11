@@ -1,4 +1,5 @@
 export class Vehicle{
+    type:string;
     manufacturer:string;
     model:string;
     license:string;
