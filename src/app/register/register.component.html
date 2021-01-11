@@ -2,7 +2,7 @@
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, register on our portal!</h2>
     <form [formGroup]="RegForm" (ngSubmit)="register()">
 
-        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.username >
+        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.userName >
         <div class="text-danger" *ngIf="RegForm.controls.username.touched && RegForm.controls.username.hasError('required')">
             Name required
         </div>
@@ -20,7 +20,7 @@
             Date of Birth required
         </div>
 
-        <input type="tel" name="phoneno" placeholder="Enter Phone" formControlName="phoneno" [(ngModel)]=user.phoneno><br>
+        <input type="tel" name="phoneno" placeholder="Enter Phone" formControlName="phoneno" [(ngModel)]=user.phoneNo><br>
         <div class="text-danger" *ngIf="RegForm.controls.phoneno.touched && RegForm.controls.phoneno.hasError('required')">
             Contact required
         </div>
@@ -28,7 +28,7 @@
             Incorrect phone number
         </div>
 
-        <input type="text" name="street" placeholder="Address line 1" formControlName="street" [(ngModel)]=user.street><br>
+        <input type="text" name="street" placeholder="Address line 1" formControlName="street" [(ngModel)]=user.addressLine><br>
         <div class="text-danger" *ngIf="RegForm.controls.street.touched && RegForm.controls.street.hasError('required')">
             Address required
         </div>
@@ -43,7 +43,7 @@
             State name required
         </div>
 
-        <input type="number" name="pincode" placeholder="Pincode" formControlName="pincode" [(ngModel)]=user.pincode><br>
+        <input type="number" name="pincode" placeholder="Pincode" formControlName="pincode" [(ngModel)]=user.pin><br>
         <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('required')">
             Pincode required
         </div>
@@ -61,7 +61,7 @@
             Re-Enter Password
         </div>
 
-        <input type="submit" value="Register">
+        <input type="submit" [disabled]="!RegForm.valid" value="Register">
         <nav><a routerLink="/vehicle-registration" routerLinkActive="active">Vehicle Registration</a></nav>
 
     </form>
