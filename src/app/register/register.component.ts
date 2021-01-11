@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
+import { User } from '../appmodel/user';
+import { InsuranceService } from '../insurance.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +11,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  RegForm:FormGroup;
+  user:User = new User();
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private insuranceService: InsuranceService) {
+   }
+
+  public ngOnInit(): void {
+    this.RegForm = this.fb.group({
+      username: ["",Validators.required],
+      email: ["",Validators.compose([Validators.required, CustomValidators.email])],
+      dateOfBirth: ["",Validators.required],
+      phoneno: ["",Validators.compose([Validators.required, Validators.pattern(/^\d{10}$/)])],
+      street: ["",Validators.required],
+      city: ["",Validators.required],
+      state: ["",Validators.required],
+      pincode: ["",Validators.compose([Validators.required,Validators.pattern(/^\d{6}$/)])],
+      password1: ["",Validators.compose([
+          Validators.required,
+          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,12}')
+         ])
+      ],
+      password2: ["",Validators.required]
+  });
   }
 
+  register(){
+    //console.log("Register function works!");
+    if(this.user.password1 == this.user.password2){
+      //alert(JSON.stringify(this.user));
+      this.insuranceService.registerUser(this.user).subscribe(response => {
+        alert(JSON.stringify(response));
+    })
+    }
+    else{
+      alert("Password mismatch!");
+    }
+  }
+  
 }
