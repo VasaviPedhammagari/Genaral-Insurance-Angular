@@ -1,16 +1,68 @@
 <div id="form">
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, register on our portal!</h2>
-    <form>
-        <input type="text" name="userName" placeholder="Enter Name" required><br>
-        <input type="email" name="email" placeholder="Enter Email" required><br>
-        <input type="date" name="dateOfBirth" placeholder="Enter Date Of Birth" required><br>
-        <input type="number" name="userPhoneNo" placeholder="Enter Phone" required><br>
-        <input type="text" name="landmark" placeholder="Address line 1" required><br>
-        <input type="text" name="city" placeholder="City" required><br>
-        <input type="text" name="state" placeholder="State" required><br>
-        <input type="number" name="pincode" placeholder="Pin" required><br>
-        <input type="password" name="password1" placeholder="Create Password" required><br>
-        <input type="password" name="password2" placeholder="Confirm Password" required><br>
+    <form [formGroup]="RegForm" (ngSubmit)="register()">
+
+        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.username >
+        <div class="text-danger" *ngIf="RegForm.controls.username.touched && RegForm.controls.username.hasError('required')">
+            Name required
+        </div>
+
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=user.email><br>
+        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('required')">
+            Email required
+        </div>
+        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('email')">
+            Incorrect email pattern!
+        </div>
+
+        <input type="date" name="dateOfBirth" placeholder="Enter Date Of Birth" formControlName="dateOfBirth" [(ngModel)]=user.dateOfBirth><br>
+        <div class="text-danger" *ngIf="RegForm.controls.dateOfBirth.touched && RegForm.controls.dateOfBirth.hasError('required')">
+            Date of Birth required
+        </div>
+
+        <input type="tel" name="phoneno" placeholder="Enter Phone" formControlName="phoneno" [(ngModel)]=user.phoneno><br>
+        <div class="text-danger" *ngIf="RegForm.controls.phoneno.touched && RegForm.controls.phoneno.hasError('required')">
+            Contact required
+        </div>
+        <div class="text-danger" *ngIf="RegForm.controls.phoneno.touched && RegForm.controls.phoneno.hasError('pattern')">
+            Incorrect phone number
+        </div>
+
+        <input type="text" name="street" placeholder="Address line 1" formControlName="street" [(ngModel)]=user.street><br>
+        <div class="text-danger" *ngIf="RegForm.controls.street.touched && RegForm.controls.street.hasError('required')">
+            Address required
+        </div>
+
+        <input type="text" name="city" placeholder="City" formControlName="city" [(ngModel)]=user.city><br>
+        <div class="text-danger" *ngIf="RegForm.controls.city.touched && RegForm.controls.city.hasError('required')">
+            City name required
+        </div>
+
+        <input type="text" name="state" placeholder="State" formControlName="state" [(ngModel)]=user.state><br>
+        <div class="text-danger" *ngIf="RegForm.controls.state.touched && RegForm.controls.state.hasError('required')">
+            State name required
+        </div>
+
+        <input type="number" name="pincode" placeholder="Pincode" formControlName="pincode" [(ngModel)]=user.pincode><br>
+        <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('required')">
+            Pincode required
+        </div>
+        <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('pattern')">
+            Incorrect Pincode
+        </div>
+        
+        <input type="password" name="password1" placeholder="Create Password" formControlName="password1" [(ngModel)]=user.password1><br>
+        <div class="text-danger" *ngIf="RegForm.controls.password1.touched && RegForm.controls.password1.hasError('pattern')">
+            Weak
+        </div>
+
+        <input type="password" name="password2" placeholder="Confirm Password" formControlName="password2" [(ngModel)]=user.password2><br>
+        <div class="text-danger" *ngIf="RegForm.controls.password2.touched && RegForm.controls.password2.hasError('required')">
+            Re-Enter Password
+        </div>
+
         <input type="submit" value="Register">
+        <nav><a routerLink="/vehicle-registration" routerLinkActive="active">Vehicle Registration</a></nav>
+
     </form>
 </div>

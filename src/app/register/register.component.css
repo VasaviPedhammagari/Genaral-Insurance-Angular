@@ -29,3 +29,8 @@ input,
 input[type=submit]{
     background-color: rgb(230, 131, 66);
 }
+
+div.text-danger{
+    color: red;
+    text-align: right;
+}
