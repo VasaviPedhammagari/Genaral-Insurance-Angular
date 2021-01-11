@@ -1,12 +1,11 @@
 export class User{
-  username: string;
+  userName: string;
   email: string;
   dateOfBirth:string;
-  phoneno:number;
-  street:string;
+  phoneNo:number;
+  addressLine:string;
   city:string;
-  pincode:string;
+  pin:string;
   state:string;
-  password1:string;
-  password2:string;
+  password:string;
 }
