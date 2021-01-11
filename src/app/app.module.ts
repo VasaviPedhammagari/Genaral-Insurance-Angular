@@ -6,15 +6,14 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
-
-
- 
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuyInsuranceComponent,
-    routingComponents
+    routingComponents,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
