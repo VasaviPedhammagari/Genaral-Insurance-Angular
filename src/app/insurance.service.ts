@@ -11,7 +11,7 @@ export class InsuranceService {
   constructor(private http: HttpClient) { }
   
   registerUser(user: User) : Observable<any> {
-    let url = "http://localhost:8080/spring-rest-mvc/api/register";
+    let url = "http://localhost:8181/register";
     return this.http.post(url, user);   
   }
 }
