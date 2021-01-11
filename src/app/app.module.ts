@@ -6,6 +6,11 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecaptchaModule } from "ng-recaptcha";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+ 
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -13,6 +18,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     BuyInsuranceComponent,
     routingComponents,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
     HomeComponent
   ],
   imports: [
@@ -21,7 +28,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
