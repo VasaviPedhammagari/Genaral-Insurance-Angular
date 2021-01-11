@@ -2,7 +2,7 @@
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, register on our portal!</h2>
     <form [formGroup]="RegForm" (ngSubmit)="register()">
 
-        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.username >
+        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.userName>
         <div class="text-danger" *ngIf="RegForm.controls.username.touched && RegForm.controls.username.hasError('required')">
             Name required
         </div>
@@ -20,7 +20,7 @@
             Date of Birth required
         </div>
 
-        <input type="tel" name="phoneno" placeholder="Enter Phone" formControlName="phoneno" [(ngModel)]=user.phoneno><br>
+        <input type="tel" name="phoneno" placeholder="Enter Phone" formControlName="phoneno" [(ngModel)]=user.phoneNo><br>
         <div class="text-danger" *ngIf="RegForm.controls.phoneno.touched && RegForm.controls.phoneno.hasError('required')">
             Contact required
         </div>
@@ -28,30 +28,30 @@
             Incorrect phone number
         </div>
 
-        <input type="text" name="street" placeholder="Address line 1" formControlName="street" [(ngModel)]=user.street><br>
+        <input type="text" name="street" placeholder="Address" formControlName="street" [(ngModel)]=address.addressLine><br>
         <div class="text-danger" *ngIf="RegForm.controls.street.touched && RegForm.controls.street.hasError('required')">
             Address required
         </div>
 
-        <input type="text" name="city" placeholder="City" formControlName="city" [(ngModel)]=user.city><br>
+        <input type="text" name="city" placeholder="City" formControlName="city" [(ngModel)]=address.city><br>
         <div class="text-danger" *ngIf="RegForm.controls.city.touched && RegForm.controls.city.hasError('required')">
             City name required
         </div>
 
-        <input type="text" name="state" placeholder="State" formControlName="state" [(ngModel)]=user.state><br>
+        <input type="text" name="state" placeholder="State" formControlName="state" [(ngModel)]=address.state><br>
         <div class="text-danger" *ngIf="RegForm.controls.state.touched && RegForm.controls.state.hasError('required')">
             State name required
         </div>
 
-        <input type="number" name="pincode" placeholder="Pincode" formControlName="pincode" [(ngModel)]=user.pincode><br>
+        <input type="number" name="pincode" placeholder="Pincode" formControlName="pincode" [(ngModel)]=address.pin><br>
         <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('required')">
             Pincode required
         </div>
         <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('pattern')">
             Incorrect Pincode
         </div>
-        
-        <input type="password" name="password1" placeholder="Create Password" formControlName="password1" [(ngModel)]=user.password1><br>
+
+        <input type="password" name="password1" placeholder="Create Password" formControlName="password1" [(ngModel)]=user.password><br>
         <div class="text-danger" *ngIf="RegForm.controls.password1.touched && RegForm.controls.password1.hasError('pattern')">
             Weak
         </div>
