@@ -7,16 +7,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
-
-
- 
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BuyInsuranceComponent,
-    routingComponents
+    routingComponents,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
