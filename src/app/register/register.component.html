@@ -2,7 +2,11 @@
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, register on our portal!</h2>
     <form [formGroup]="RegForm" (ngSubmit)="register()">
 
+<<<<<<< HEAD
         <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.userName required>
+=======
+        <input type="text" name="username" placeholder="Enter Name" formControlName="username" [(ngModel)]=user.userName>
+>>>>>>> 6cc1d1a674f43fa247873bca3872fcf9fd52e7ce
         <div class="text-danger" *ngIf="RegForm.controls.username.touched && RegForm.controls.username.hasError('required')">
             Name required
         </div>
@@ -28,7 +32,11 @@
             Incorrect phone number
         </div>
 
+<<<<<<< HEAD
         <input type="text" name="street" placeholder="Address line 1" formControlName="street" [(ngModel)]=address.addressLine><br>
+=======
+        <input type="text" name="street" placeholder="Address" formControlName="street" [(ngModel)]=address.addressLine><br>
+>>>>>>> 6cc1d1a674f43fa247873bca3872fcf9fd52e7ce
         <div class="text-danger" *ngIf="RegForm.controls.street.touched && RegForm.controls.street.hasError('required')">
             Address required
         </div>
@@ -50,7 +58,11 @@
         <div class="text-danger" *ngIf="RegForm.controls.pincode.touched && RegForm.controls.pincode.hasError('pattern')">
             Incorrect Pincode
         </div>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 6cc1d1a674f43fa247873bca3872fcf9fd52e7ce
         <input type="password" name="password1" placeholder="Create Password" formControlName="password1" [(ngModel)]=user.password><br>
         <div class="text-danger" *ngIf="RegForm.controls.password1.touched && RegForm.controls.password1.hasError('pattern')">
             Weak

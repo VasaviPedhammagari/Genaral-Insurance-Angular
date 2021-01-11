@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { Address } from '../appmodel/address';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
 
@@ -14,7 +15,6 @@ export class RegisterComponent implements OnInit {
   RegForm:FormGroup;
   user:User = new User();
   address:Address = new Address();
-  password2:string;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService) {
    }
@@ -40,9 +40,15 @@ export class RegisterComponent implements OnInit {
 
   register(){
     //console.log("Register function works!");
+<<<<<<< HEAD
     if(this.user.password == this.password2){
       console.log(this.password2);
       alert(JSON.stringify(this.user));
+=======
+    if(this.user.password == this.user.password2){
+      //alert(JSON.stringify(this.user));
+      this.user.address = this.address;
+>>>>>>> 6cc1d1a674f43fa247873bca3872fcf9fd52e7ce
       this.insuranceService.registerUser(this.user).subscribe(response => {
         alert(JSON.stringify(response));
     })
