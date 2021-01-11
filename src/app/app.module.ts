@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecaptchaModule } from "ng-recaptcha";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
  
 
@@ -16,7 +18,9 @@ import { CustomFormsModule } from 'ng2-validation';
     AppComponent,
     LoginComponent,
     BuyInsuranceComponent,
-    routingComponents
+    routingComponents,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,8 @@ import { CustomFormsModule } from 'ng2-validation';
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
