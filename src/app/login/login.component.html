@@ -2,12 +2,12 @@
     <h2 style="font-weight: normal;">Welcome to Policy Insurance, login here!</h2>
     <form [formGroup]="LoginForm" (ngSubmit)="loginCheck()">
 
-        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=user.email><br>
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=login.email><br>
         <div class="text-danger" *ngIf="LoginForm.controls.email.touched && LoginForm.controls.email.hasError('required')">
             Email required
         </div>
 
-        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=user.password><br>
+        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=login.password><br>
         <div class="text-danger" *ngIf="LoginForm.controls.password.touched && LoginForm.controls.password.hasError('required')">
             Enter Password
         </div>

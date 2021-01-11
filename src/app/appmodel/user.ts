@@ -1,12 +1,11 @@
+import { Address } from "./address";
+
 export class User{
-  username: string;
+  userName: string;
   email: string;
   dateOfBirth:string;
-  phoneno:number;
-  street:string;
-  city:string;
-  pincode:string;
-  state:string;
-  password1:string;
+  phoneNo:number;
+  address:Address;
+  password:string;
   password2:string;
 }
