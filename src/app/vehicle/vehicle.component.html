@@ -1,6 +1,13 @@
 <div id="form">
 <form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()">
 
+    <!-- <div *ngFor="let t of type">
+        <div class="radio">
+            <input type="radio" name="radio" id="radio-{{t.id}}" [(ngModel)]="value" [value]="t.value" />
+        <label for="radio-{{t.id}}">{{t.id}}
+        </label>
+    </div> -->
+
     <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer >
     <div class="text-danger" *ngIf="VehicleForm.controls.manufacturer.touched && VehicleForm.controls.manufacturer.hasError('required')">
         *Required

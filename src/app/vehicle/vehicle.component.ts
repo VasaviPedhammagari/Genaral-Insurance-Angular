@@ -12,6 +12,7 @@ export class VehicleComponent implements OnInit {
 
   VehicleForm:FormGroup;
   vehicle:Vehicle = new Vehicle();
+  type: string[] = ['2-Wheeler', '4-Wheeler'];
 
   constructor(private fb: FormBuilder,private insuranceService: InsuranceService) { }
 
@@ -29,6 +30,7 @@ export class VehicleComponent implements OnInit {
 
   saveVehicle(){
     console.log("saveVehicle working!");
+    console.log(this.vehicle.type);
     
   }
 
