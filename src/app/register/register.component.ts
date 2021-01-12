@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
 import { Address } from '../appmodel/address';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
@@ -41,10 +40,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    //console.log("Register function works!");
-    if(this.user.password == this.user.password2){
-      //alert(JSON.stringify(this.user));
-  
+    if(this.user.password == this.user.password2){  
       this.user.address = this.address;
       this.insuranceService.registerUser(this.user).subscribe(response => {
         alert(JSON.stringify(response));
