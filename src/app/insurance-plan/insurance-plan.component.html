@@ -1,0 +1,39 @@
+<div id="form">
+<form #planForm="ngForm" (ngSubmit)="saveData(planForm.value)">
+
+<div class="box">Plans</div><br>
+<div class="box1">Choose your plan</div><br><br>
+
+<ul class="donate-now">
+<li>
+    <input type="radio" name = "plan" value="Third Party Liability" id="thirdparty" ngModel/>
+    <label for = "thirdparty" >Third Party Liability</label>
+</li>
+<li>
+    <input type="radio" name = "plan" value="Comprehensive" id="comprehensive" ngModel/>
+    <label for = "comprehensive">Comprehensive</label>
+</li>
+</ul>
+<br><br><br><br>
+<div class="box1">Choose your plan term</div><br><br>
+
+<ul class="donate-now">
+<li>
+   <input type="radio" name = "planTerm" value=1 id="oneyrplan" ngModel/>
+   <label for = "oneyrplan">One Year Plan</label>
+</li>
+<br><br><br>
+<li>
+   <input type="radio" name = "planTerm" value=2 id="twoyrplan" ngModel/>
+   <label for = "twoyrplan">Two Year Plan</label>
+</li>
+<br><br><br>
+<li>
+   <input type="radio" name = "planTerm" value=3 id="threeyrplan" ngModel/>
+   <label for = "threeyrplan">Three year Plan</label>
+</li>
+</ul>
+<br><br><br><br>
+   <input type="submit" value="Make Payment"/>
+</form>
+</div>

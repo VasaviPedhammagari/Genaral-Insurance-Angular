@@ -11,7 +11,7 @@
         <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('required')">
             Email required
         </div>
-        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('email')">
+        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('pattern')">
             Incorrect email pattern!
         </div>
 
@@ -61,7 +61,7 @@
             Re-Enter Password
         </div>
 
-        <input type="submit" value="Register">
+        <input type="submit" [disabled]="!RegForm.valid" value="Register">
         <nav><a routerLink="/vehicle-registration" routerLinkActive="active">Vehicle Registration</a></nav>
 
     </form>

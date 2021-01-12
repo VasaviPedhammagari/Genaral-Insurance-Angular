@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
 import { Address } from '../appmodel/address';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,14 +15,15 @@ export class RegisterComponent implements OnInit {
   RegForm:FormGroup;
   user:User = new User();
   address:Address = new Address();
+  message: string;
 
-  constructor(private fb: FormBuilder, private insuranceService: InsuranceService) {
+  constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
    }
 
   public ngOnInit(): void {
     this.RegForm = this.fb.group({
       username: ["",Validators.required],
-      email: ["",Validators.compose([Validators.required, CustomValidators.email])],
+      email: ["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])],
       dateOfBirth: ["",Validators.required],
       phoneno: ["",Validators.compose([Validators.required, Validators.pattern(/^\d{10}$/)])],
       street: ["",Validators.required],
@@ -39,12 +40,19 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    //console.log("Register function works!");
-    if(this.user.password == this.user.password2){
-      //alert(JSON.stringify(this.user));
+    if(this.user.password == this.user.password2){  
       this.user.address = this.address;
       this.insuranceService.registerUser(this.user).subscribe(response => {
         alert(JSON.stringify(response));
+        if(response.status == 'SUCCESS') {
+          let userId = response.userId;
+          let userName = response.userName;
+          sessionStorage.setItem('userId', String(userId));
+          sessionStorage.setItem('userName', userName);
+          this.router.navigate(['vehicle-registration']);
+        }
+        else
+          this.message = response.message;
     })
     }
     else{
