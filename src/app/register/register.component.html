@@ -11,7 +11,7 @@
         <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('required')">
             Email required
         </div>
-        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('email')">
+        <div class="text-danger" *ngIf="RegForm.controls.email.touched && RegForm.controls.email.hasError('pattern')">
             Incorrect email pattern!
         </div>
 
