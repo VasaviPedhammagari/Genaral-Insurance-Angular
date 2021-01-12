@@ -1,10 +1,10 @@
 export class Vehicle{
-    type:string;
+    vehicleType:string;
     manufacturer:string;
     model:string;
-    license:string;
+    drivingLicense:string;
     purchaseDate:string;
-    regno:string;
-    engineno:string;
-    chassisno:string;
+    regNo:string;
+    engineNumber:string;
+    chassisNumber:string;
 }
