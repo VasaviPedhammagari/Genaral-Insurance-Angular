@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 
@@ -14,7 +15,7 @@ export class VehicleComponent implements OnInit {
   vehicle:Vehicle = new Vehicle();
   type: string[] = ['2-Wheeler', '4-Wheeler'];
 
-  constructor(private fb: FormBuilder,private insuranceService: InsuranceService) { }
+  constructor(private fb: FormBuilder,private insuranceService: InsuranceService,private router:Router) { }
 
   ngOnInit(): void {
     this.VehicleForm = this.fb.group({
@@ -31,7 +32,7 @@ export class VehicleComponent implements OnInit {
   saveVehicle(){
     console.log("saveVehicle working!");
     console.log(this.vehicle.type);
-    
+    this.router.navigate(['choose-plan']);
   }
 
 }
