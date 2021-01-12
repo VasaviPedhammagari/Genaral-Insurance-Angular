@@ -44,7 +44,7 @@ export class VehicleComponent implements OnInit {
       if(response.status == 'SUCCESS') {
         let regNo = response.regNo;
         sessionStorage.setItem('regNo',String(regNo));
-        this.router.navigate(['home'])
+        this.router.navigate(['choose-plan'])
       }
       else
           this.message = response.message;
