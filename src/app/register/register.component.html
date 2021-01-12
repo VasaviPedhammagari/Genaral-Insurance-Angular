@@ -61,7 +61,7 @@
             Re-Enter Password
         </div>
 
-        <input type="submit" value="Register">
+        <input type="submit" [disabled]="!RegForm.valid" value="Register">
         <nav><a routerLink="/vehicle-registration" routerLinkActive="active">Vehicle Registration</a></nav>
 
     </form>

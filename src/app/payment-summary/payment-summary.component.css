@@ -1,0 +1,36 @@
+#form{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px 10px 30px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input[type=submit]{
+    background-color: rgb(230, 131, 66);
+}
+
+div.text-danger{
+    color: red;
+    text-align: right;
+}
