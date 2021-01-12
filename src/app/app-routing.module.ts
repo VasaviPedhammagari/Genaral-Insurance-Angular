@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'payment-summary', component: PaymentSummaryComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
@@ -26,4 +28,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent, ResetPasswordComponent, ForgotPasswordComponent]
+export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent,
+                                    ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent]
