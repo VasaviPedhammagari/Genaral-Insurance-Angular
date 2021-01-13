@@ -33,4 +33,9 @@ export class InsuranceService {
     let url = "http://localhost:8181//get-estimates";
     return this.http.post<Estimate[]>(url, vehicle);
   }
+  registerVehicle(vehicle: Vehicle) :Observable<any> {
+    console.log("registerVehicle working!");
+    let url = "http://localhost:8181/register-vehicle";
+    return this.http.post(url, vehicle);
+  }
 }
