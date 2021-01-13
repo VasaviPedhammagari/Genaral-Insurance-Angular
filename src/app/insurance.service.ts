@@ -32,7 +32,7 @@ export class InsuranceService {
   }
 
   fetchPremiums(vehicle: Vehicle): Observable<Estimate[]> {
-    let url = "http://localhost:8181//get-estimates";
+    let url = "http://localhost:8181/get-estimates";
     return this.http.post<Estimate[]>(url, vehicle);
   }
   adminlogin(adminLogin: adminLogin) : Observable<any>{
