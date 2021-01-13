@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from './appmodel/login';
+import { MotorInsurance } from './appmodel/motorInsurance';
+import { Payment } from './appmodel/payment';
+import { RenewDetails } from './appmodel/renewDetails';
 import { User } from './appmodel/user';
 import { Vehicle } from './appmodel/vehicle';
 
@@ -24,5 +27,20 @@ export class InsuranceService {
     console.log("registerVehicle working!");
     let url = "http://localhost:8181/register-vehicle";
     return this.http.post(url, vehicle);
+  }
+
+  renew(renewDetails:RenewDetails) :Observable<any> {
+    let url = "http://localhost:8181/renew";
+    return this.http.post(url,renewDetails);
+  }
+
+  choosePlan(motorInsurance: MotorInsurance) : Observable<any> {
+     let url = "http://localhost:8181/choose-plan";
+     return this.http.post(url,motorInsurance);
+  }
+
+  payment(payment: Payment) :Observable<any> {
+    let url = "http://localhost:8181/payment";
+    return this.http.post(url,payment);
   }
 }

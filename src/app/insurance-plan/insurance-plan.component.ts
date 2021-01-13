@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InsuranceDetails} from '../appmodel/insuranceDetails';
+import { MotorInsurance } from '../appmodel/motorInsurance';
+import { InsuranceService } from '../insurance.service';
 
 @Component({
   selector: 'app-insurance-plan',
@@ -9,9 +10,9 @@ import { InsuranceDetails} from '../appmodel/insuranceDetails';
 })
 export class InsurancePlanComponent implements OnInit {
   
-  insuranceDetails:InsuranceDetails = new InsuranceDetails();
+  motorInsurance:MotorInsurance = new MotorInsurance();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
   }
@@ -19,8 +20,11 @@ export class InsurancePlanComponent implements OnInit {
   saveData(data:any){
     alert("plan : "+data.plan);
     alert("plan term : "+data.planTerm+" year ");
-    this.insuranceDetails.planType=data.plan;
-    this.insuranceDetails.noOfYrs=data.planTerm;    
-    this.router.navigate(['payment']);
+    this.motorInsurance.planType=data.plan;
+    this.motorInsurance.noOfYrs=data.planTerm;    
+    this.insuranceService.choosePlan(this.motorInsurance).subscribe(response =>{
+      alert(JSON.stringify(response));
+      this.router.navigate(['payment']);
+    })
   }
 }

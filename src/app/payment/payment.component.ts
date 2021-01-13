@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Payment } from '../appmodel/payment';
+import { InsuranceService } from '../insurance.service';
 
 @Component({
   selector: 'app-payment',
@@ -12,7 +13,7 @@ export class PaymentComponent implements OnInit {
 
   PaymentForm:FormGroup;
   payment: Payment = new Payment();
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
     this.PaymentForm = this.fb.group({
@@ -26,6 +27,9 @@ export class PaymentComponent implements OnInit {
   }
  doPayment(){
    alert(this.payment.paymentMode);
-   this.router.navigate(['payment-summary']);
+   this.insuranceService.payment(this.payment).subscribe(response =>{
+     alert(JSON.stringify(response));
+     this.router.navigate(['payment-summary']);
+   })
  }
 }
