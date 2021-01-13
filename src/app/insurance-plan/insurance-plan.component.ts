@@ -14,6 +14,10 @@ export class InsurancePlanComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    const regNo = sessionStorage.getItem('regNo');
+    const uid = sessionStorage.getItem('userName');
+    const uname = sessionStorage.getItem('userId');
+    console.log(regNo+" "+uid+" "+uname );
   }
 
   saveData(data:any){
