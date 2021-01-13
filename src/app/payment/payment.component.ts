@@ -15,6 +15,10 @@ export class PaymentComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
+    sessionStorage.setItem('price', String('0'));
+    sessionStorage.setItem('manufacturer', '');
+    sessionStorage.setItem('model', '');
+    sessionStorage.setItem('purchaseDate', '');
     this.PaymentForm = this.fb.group({
         paymentMode: ["",Validators.required],
         upiId:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
