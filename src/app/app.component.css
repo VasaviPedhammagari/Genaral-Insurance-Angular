@@ -1,33 +1,33 @@
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgb(230, 131, 66);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(230, 131, 66);
 }
 
 li {
-  float: left;
+    float: left;
 }
 
 li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 li a:hover {
-  background-color: rgb(236, 102, 12);
+    background-color: rgb(236, 102, 12);
 }
 
-#navigation{
-  margin-bottom: 10px;
+#navigation {
+    margin-bottom: 10px;
 }
 
 .header {
-  background-color: #f1f1f1;
-  padding: 20px;
-  text-align: center;
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
 }

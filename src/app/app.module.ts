@@ -11,6 +11,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
  
 import { HomeComponent } from './home/home.component';
+import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator.component';
+import { ShowPlansComponent } from './show-plans/show-plans.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +25,11 @@ import { ClaimComponent } from './claim/claim.component';
     AppComponent,
     routingComponents,
     HomeComponent,
+    PremiumCalulatorComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    HomeComponent,
+    ShowPlansComponent,
     InsurancePlanComponent,
     PaymentComponent,
     ResetPasswordComponent,

@@ -15,11 +15,15 @@ export class VehicleComponent implements OnInit {
   vehicle:Vehicle = new Vehicle();
   type: string[] = ['2-Wheeler', '4-Wheeler'];
   message: string;
+  price: number = 0;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { 
   }
 
-  public ngOnInit(): void {    
+  public ngOnInit(): void {  
+    this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
+    this.vehicle.model = sessionStorage.getItem('model') || '';
+    this.vehicle.purchaseDate = sessionStorage.getItem('purchaseDate') || '';  
     this.VehicleForm = this.fb.group({
       manufacturer: ["",Validators.required],
       model: ["",Validators.required],
@@ -34,15 +38,22 @@ export class VehicleComponent implements OnInit {
   saveVehicle(){
     console.log("saveVehicle working!");
     //console.log(vehicle);
-    const uname = sessionStorage.getItem('userName')  || '{}';
-    const uid = sessionStorage.getItem('userId')  || '{}';
+    const uname = sessionStorage.getItem('userName')  || '';
+    const uid = sessionStorage.getItem('userId')  || '';
     console.log(uname+" "+uid);
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       if(response.status == 'SUCCESS') {
         let regNo = response.regNo;
         sessionStorage.setItem('regNo',String(regNo));
-        this.router.navigate(['choose-plan'])
+        this.price = parseInt(sessionStorage.getItem('price') || '{}');
+        if(this.price > 0){
+          this.router.navigate(['payment']);
+        }
+        else{
+          this.router.navigate(['choose-plan']);
+        }
+        
       }
       else
           this.message = response.message;
