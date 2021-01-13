@@ -13,16 +13,25 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator.component';
+import { ShowPlansComponent } from './show-plans/show-plans.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
+import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
+import { ClaimComponent } from './claim/claim.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     HomeComponent,
+    PremiumCalulatorComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    HomeComponent,
+    ShowPlansComponent,
     InsurancePlanComponent,
     PaymentComponent,
     ResetPasswordComponent,
@@ -31,7 +40,9 @@ import { PaymentSummaryComponent } from './payment-summary/payment-summary.compo
     AdminLoginComponent,
     AdminDashboardComponent,
     LoginComponent,
-    PaymentSummaryComponent
+    PaymentSummaryComponent,
+    RenewInsuranceComponent,
+    ClaimComponent
   ],
   imports: [
     BrowserModule,
