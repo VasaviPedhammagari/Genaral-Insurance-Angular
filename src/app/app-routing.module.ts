@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
+import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'login', component: LoginComponent},
   { path: 'payment-summary', component: PaymentSummaryComponent},
+  { path: 'renew-insurance', component: RenewInsuranceComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
@@ -29,4 +31,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent,
-                                    ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent]
+  ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent, RenewInsuranceComponent]

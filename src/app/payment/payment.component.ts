@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
     this.PaymentForm = this.fb.group({
         paymentMode: ["",Validators.required],
-        upiId:["",Validators.required],
+        upiId:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
         cardNumber: ["",Validators.compose([Validators.required,Validators.pattern(/^\d{16}$/)])],
         cardHolderName:["",Validators.required],
         expiryDate:["",Validators.required],

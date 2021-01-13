@@ -16,6 +16,9 @@
                <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('required')">
                 Upi Id required
                </div>
+               <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('pattern')">
+                Incorrect Upi Id pattern
+               </div>
               </div>
               <div *ngSwitchCase="'Card'">
                 <label>Enter Card details:</label> <br>

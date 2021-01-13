@@ -20,7 +20,7 @@ export class InsurancePlanComponent implements OnInit {
     alert("plan : "+data.plan);
     alert("plan term : "+data.planTerm+" year ");
     this.insuranceDetails.planType=data.plan;
-    this.insuranceDetails.noOfYrs=data.planTerm;
+    this.insuranceDetails.noOfYrs=data.planTerm;    
     this.router.navigate(['payment']);
   }
 }
