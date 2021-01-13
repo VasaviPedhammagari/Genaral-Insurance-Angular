@@ -11,6 +11,7 @@ import { ShowPlansComponent } from './show-plans/show-plans.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
+import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,8 @@ const routes: Routes = [
   { path: 'choose-plan', component: InsurancePlanComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'payment-summary', component: PaymentSummaryComponent },
+  { path: 'renew-insurance', component: RenewInsuranceComponent},
+  { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
 @NgModule({
@@ -33,4 +36,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent,
-  ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent]
+  ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent, RenewInsuranceComponent]
