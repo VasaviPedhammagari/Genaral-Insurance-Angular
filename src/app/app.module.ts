@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomFormsModule } from 'ng2-validation';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RecaptchaModule } from "ng-recaptcha";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -33,7 +32,6 @@ import { PaymentSummaryComponent } from './payment-summary/payment-summary.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomFormsModule,
     HttpClientModule,
     RecaptchaModule,
   ],
