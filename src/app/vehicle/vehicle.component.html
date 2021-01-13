@@ -1,12 +1,17 @@
 <div id="form">
+<h4>Hello {{ uname }} ! Choose your vehicle here</h4>
 <form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()" novalidate>
-
-   
-    <!--<input type="radio" id="two" value="two" name="type" formControlName="type">
-    <label for="two">2 -Wheeler</label>  
-    <input type="radio" id="four" value="four" name="type" formControlName="type">
-    <label for="four">4 -Wheeler</label> -->
-
+    <ul class="donate-now">
+        <li>
+            <input type="radio" name = "vehicleType" value="2-wheeler" id="2-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
+            <label for = "2-wheeler" > 2- Wheeler</label>
+        </li>
+        <li>
+            <input type="radio" name = "vehicleType" value="4-wheeler" id="4-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
+            <label for = "4-wheeler">4 - Wheeler</label>
+        </li>
+    </ul>
+    <br><br><br><br>
     <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer><br>
     <div class="text-danger" *ngIf="VehicleForm.controls.manufacturer.touched && VehicleForm.controls.manufacturer.hasError('required')">
         *Required
