@@ -15,12 +15,18 @@ export class VehicleComponent implements OnInit {
   vehicle:Vehicle = new Vehicle();
   type: string[] = ['2-Wheeler', '4-Wheeler'];
   message: string;
+  uname:string;
+  uid:string;
+  
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { 
   }
 
   public ngOnInit(): void {    
+    this.uname = sessionStorage.getItem('userName')!;
+    this.uid = sessionStorage.getItem('userId')!;
     this.VehicleForm = this.fb.group({
+      vehicleType: ["", Validators.required],
       manufacturer: ["",Validators.required],
       model: ["",Validators.required],
       license: ["",Validators.required],
@@ -32,15 +38,11 @@ export class VehicleComponent implements OnInit {
   }
 
   saveVehicle(){
-    console.log("saveVehicle working!");
-    //console.log(vehicle);
-    const uname = sessionStorage.getItem('userName')  || '{}';
-    const uid = sessionStorage.getItem('userId')  || '{}';
-    console.log(uname+" "+uid);
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
+      console.log(this.vehicle.vehicleType);
       if(response.status == 'SUCCESS') {
-        let regNo = response.regNo;
+        let regNo = response.registeredVehicleId;
         sessionStorage.setItem('regNo',String(regNo));
         this.router.navigate(['choose-plan'])
       }

@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
       this.insuranceService.registerUser(this.user).subscribe(response => {
         alert(JSON.stringify(response));
         if(response.status == 'SUCCESS') {
-          let userId = response.userId;
-          let userName = response.userName;
+          let userId = response.registeredUserId;
+          let userName = response.registeredUserName;
           sessionStorage.setItem('userId', String(userId));
           sessionStorage.setItem('userName', userName);
           this.router.navigate(['vehicle-registration']);
