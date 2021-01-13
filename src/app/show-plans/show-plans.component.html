@@ -1,0 +1,10 @@
+<div *ngFor="let item of estimate"> </div>
+
+<div id="form">
+    <div id="card" *ngFor="let item of estimate">
+        <div id="type">{{item.type}}</div>
+        <div id="price"><button class="button">₹{{item.price}}</button></div>
+        <div id="coverage">Total Coverage of:{{item.coverage}}</div>
+        <div id="year">Total years {{item.noOfYears}}</div>
+    </div>
+</div>

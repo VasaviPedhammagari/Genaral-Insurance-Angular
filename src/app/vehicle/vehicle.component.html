@@ -1,46 +1,46 @@
 <div id="form">
-<form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()">
+    <form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()">
 
-    <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer >
-    <div class="text-danger" *ngIf="VehicleForm.controls.manufacturer.touched && VehicleForm.controls.manufacturer.hasError('required')">
-        *Required
-    </div>
+        <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer>
+        <div class="text-danger" *ngIf="VehicleForm.controls.manufacturer.touched && VehicleForm.controls.manufacturer.hasError('required')">
+            *Required
+        </div>
 
-    <input type="model" name="model" placeholder="Model" formControlName="model" [(ngModel)]=vehicle.model><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.model.touched && VehicleForm.controls.model.hasError('required')">
-        *Required
-    </div>
-    
-    <input type="text" name="license" placeholder="Driving License" formControlName="license" [(ngModel)]=vehicle.license><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.license.touched && VehicleForm.controls.license.hasError('required')">
-        *Required
-    </div>
+        <input type="model" name="model" placeholder="Model" formControlName="model" [(ngModel)]=vehicle.model><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.model.touched && VehicleForm.controls.model.hasError('required')">
+            *Required
+        </div>
 
-    <input type="date" name="purchaseDate" placeholder="Purchase Date" formControlName="purchaseDate" [(ngModel)]=vehicle.purchaseDate><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.purchaseDate.touched && VehicleForm.controls.purchaseDate.hasError('required')">
-        *Required
-    </div>
+        <input type="text" name="license" placeholder="Driving License" formControlName="license" [(ngModel)]=vehicle.drivingLicense><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.license.touched && VehicleForm.controls.license.hasError('required')">
+            *Required
+        </div>
 
-    <input type="text" name="regno" placeholder="Registration Number" formControlName="regno" [(ngModel)]=vehicle.regno><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.regno.touched && VehicleForm.controls.regno.hasError('required')">
-        *Required
-    </div>
+        <input type="date" name="purchaseDate" placeholder="Purchase Date" formControlName="purchaseDate" [(ngModel)]=vehicle.purchaseDate><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.purchaseDate.touched && VehicleForm.controls.purchaseDate.hasError('required')">
+            *Required
+        </div>
 
-    <div class="text-danger" *ngIf="VehicleForm.controls.regno.touched && VehicleForm.controls.regno.hasError('pattern')">
-        *Required
-    </div>
+        <input type="text" name="regno" placeholder="Registration Number" formControlName="regno" [(ngModel)]=vehicle.regNo><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.regno.touched && VehicleForm.controls.regno.hasError('required')">
+            *Required
+        </div>
 
-    <input type="text" name="engineno" placeholder="Engine Number" formControlName="engineno" [(ngModel)]=vehicle.engineno><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.engineno.touched && VehicleForm.controls.engineno.hasError('required')">
-        *Required
-    </div>
+        <div class="text-danger" *ngIf="VehicleForm.controls.regno.touched && VehicleForm.controls.regno.hasError('pattern')">
+            *Required
+        </div>
 
-    <input type="text" name="chassisno" placeholder="Chassis Number" formControlName="chassisno" [(ngModel)]=vehicle.chassisno><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.chassisno.touched && VehicleForm.controls.chassisno.hasError('required')">
-        *Required
-    </div>
+        <input type="text" name="engineno" placeholder="Engine Number" formControlName="engineno" [(ngModel)]=vehicle.engineNumber><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.engineno.touched && VehicleForm.controls.engineno.hasError('required')">
+            *Required
+        </div>
 
-    <input type="submit" value="Choose Plan">
+        <input type="text" name="chassisno" placeholder="Chassis Number" formControlName="chassisno" [(ngModel)]=vehicle.chassisNumber><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.chassisno.touched && VehicleForm.controls.chassisno.hasError('required')">
+            *Required
+        </div>
 
-</form>
+        <input type="submit" value="Choose Plan">
+
+    </form>
 </div>

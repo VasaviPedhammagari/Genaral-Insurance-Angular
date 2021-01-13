@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Estimate } from './appmodel/estimate';
 import { Login } from './appmodel/login';
 import { User } from './appmodel/user';
+import { Vehicle } from './appmodel/vehicle';
 import { VehicleModel } from './appmodel/vehicleModel';
 
 @Injectable({
@@ -25,5 +27,10 @@ export class InsuranceService {
   fetchVehicleModels(): Observable<VehicleModel[]> {
     let url = "http://localhost:8181/fetchVehicleModel";
     return this.http.get<VehicleModel[]>(url);
+  }
+
+  fetchPremiums(vehicle: Vehicle): Observable<Estimate[]> {
+    let url = "http://localhost:8181//get-estimates";
+    return this.http.post<Estimate[]>(url, vehicle);
   }
 }

@@ -6,8 +6,14 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
 import { CustomFormsModule } from 'ng2-validation';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecaptchaModule } from "ng-recaptcha";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+ 
 import { HomeComponent } from './home/home.component';
 import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator.component';
+import { ShowPlansComponent } from './show-plans/show-plans.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +21,11 @@ import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator
     BuyInsuranceComponent,
     routingComponents,
     HomeComponent,
-    PremiumCalulatorComponent
+    PremiumCalulatorComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    HomeComponent,
+    ShowPlansComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +33,8 @@ import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
