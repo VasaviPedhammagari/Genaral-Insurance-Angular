@@ -14,9 +14,9 @@ export class InsurancePlanComponent implements OnInit {
 
   constructor(private router: Router,private insuranceService: InsuranceService) { }
 
+
   ngOnInit(): void {
   }
-
   saveData(data:any){
     alert("plan : "+data.plan);
     alert("plan term : "+data.planTerm+" year ");
