@@ -1,6 +1,6 @@
 <div id="form">
     <h2 style="font-weight: normal;">ADMIN</h2>
-    <h5 style="font-weight: normal; color: ;">Access only for admin, Else try user login</h5>
+    <h5 style="font-weight: normal; color: red;">Access only for admin, Else try user login</h5>
     <form [formGroup]="LoginForm" (ngSubmit)="adminCheck()">
 
         <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=adminLogin.email><br>
@@ -13,6 +13,6 @@
             Enter Password
         </div>
 
-        <input type="submit" value="Login" routerLink="/admindash">
+        <input type="submit" value="Login" >
     </form>
 </div>
