@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle',
@@ -18,6 +18,7 @@ export class VehicleComponent implements OnInit {
   uname:string;
   uid:string;
   
+  price: number = 0;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { 
   }
@@ -25,6 +26,9 @@ export class VehicleComponent implements OnInit {
   public ngOnInit(): void {    
     this.uname = sessionStorage.getItem('userName')!;
     this.uid = sessionStorage.getItem('userId')!;
+    this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
+    this.vehicle.model = sessionStorage.getItem('model') || '';
+    this.vehicle.purchaseDate = sessionStorage.getItem('purchaseDate') || '';  
     this.VehicleForm = this.fb.group({
       vehicleType: ["", Validators.required],
       manufacturer: ["",Validators.required],
@@ -44,7 +48,14 @@ export class VehicleComponent implements OnInit {
       if(response.status == 'SUCCESS') {
         let regNo = response.registeredVehicleId;
         sessionStorage.setItem('regNo',String(regNo));
-        this.router.navigate(['choose-plan'])
+        this.price = parseInt(sessionStorage.getItem('price') || '{}');
+        if(this.price > 0){
+          this.router.navigate(['payment']);
+        }
+        else{
+          this.router.navigate(['choose-plan']);
+        }
+        
       }
       else
           this.message = response.message;

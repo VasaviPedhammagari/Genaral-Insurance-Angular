@@ -16,6 +16,9 @@
                <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('required')">
                 Upi Id required
                </div>
+               <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('pattern')">
+                Incorrect Upi Id pattern
+               </div>
               </div>
               <div *ngSwitchCase="'Card'">
                 <label>Enter Card details:</label> <br>
@@ -32,9 +35,9 @@
                 <div class="text-danger" *ngIf="PaymentForm.controls.cardNumber.touched && PaymentForm.controls.cardNumber.hasError('pattern')">
                     Card Number should be 16 digits
                 </div>
-                <input type="date" name="cardExpiryDate" placeholder="Expiry Date" formControlName="expiryDate" />
+                <input type="text" name="cardExpiry" placeholder="Valid till(MM/YYYY)" formControlName="expiryDate" />
                 <div class="text-danger" *ngIf="PaymentForm.controls.expiryDate.touched && PaymentForm.controls.expiryDate.hasError('required')">
-                    expiry date required
+                    card expiry details are required
                 </div>
    
                 <input type="text" name="cvv" placeholder="cvv" formControlName="cvv" />

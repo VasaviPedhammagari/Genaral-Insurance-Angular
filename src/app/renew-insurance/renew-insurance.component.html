@@ -1,0 +1,26 @@
+<div id="form">
+    <form [formGroup]="renewForm" (ngSubmit)="checkDetails()">
+        <input type="text" name="policyNumber" placeholder="Enter Policy Number" formControlName="policyNumber" [(ngModel)]=renewDetails.policyNumber/>
+        <div class="text-danger" *ngIf="renewForm.controls.policyNumber.touched && renewForm.controls.policyNumber.hasError('required')">
+            policy number required
+        </div>
+
+        <input type="text" name="phoneNo" placeholder="Enter Mobile Number" formControlName="phoneNumber" [(ngModel)]=renewDetails.phoneNo/>
+        <div class="text-danger" *ngIf="renewForm.controls.phoneNumber.touched && renewForm.controls.phoneNumber.hasError('required')">
+            Mobile number required
+        </div>
+        <div class="text-danger" *ngIf="renewForm.controls.phoneNumber.touched && renewForm.controls.phoneNumber.hasError('pattern')">
+            Mobile number must be 10 digits
+        </div>
+
+        <input type="email" name="email" placeholder="Email" formControlName="email" [(ngModel)]=renewDetails.email/>
+        <div class="text-danger" *ngIf="renewForm.controls.email.touched && renewForm.controls.email.hasError('required')">
+            email required
+        </div>
+        <div class="text-danger" *ngIf="renewForm.controls.email.touched && renewForm.controls.email.hasError('pattern')">
+           Incorrect email pattern
+        </div>
+
+        <input type="submit" [disabled]="!renewForm.valid" value="submit"/>
+    </form>
+</div>

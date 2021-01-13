@@ -1,0 +1,13 @@
+<div id="form">
+    <form (ngSubmit)="getEstimations()">
+        Choose your car manufacturer:
+        <select name="models" id="models" [(ngModel)]="chosenMod" (ngModelChange)="modo()">
+        <option *ngFor="let model of manufactureres" value="{{model}}">{{model}}</option>
+    </select> <br><br> Choose your car model:
+        <select name="cars" id="cars" [(ngModel)]="chosenCar">
+        <option *ngFor="let car of carModels" value="{{car}}">{{car}}</option>
+    </select>
+        <input type="date" name="purchaseDate" placeholder="Purchase date of vehicle" [(ngModel)]="purchaseDate" />
+        <input type="submit" value="Get Estimations" />
+    </form>
+</div>

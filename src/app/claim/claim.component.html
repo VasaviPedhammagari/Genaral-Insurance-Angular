@@ -1,0 +1,32 @@
+<div id="form">
+    <h2 style="font-weight: normal;">Welcome to Policy Insurance, login here!</h2>
+    <form [formGroup]="ClaimForm" (ngSubmit)="claimCheck()">
+
+        <input type="number" name="policyNumber" placeholder="Enter Policy Number" formControlName="policyNumber" [(ngModel)]=claim.policyNumber><br>
+        <div class="text-danger" *ngIf="ClaimForm.controls.policyNumber.touched && ClaimForm.controls.policyNumber.hasError('required')">
+            Policy Number required
+        </div>
+
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=claim.email><br>
+        <div class="text-danger" *ngIf="ClaimForm.controls.email.touched && ClaimForm.controls.email.hasError('required')">
+            Email required
+        </div>
+
+        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=claim.password><br>
+        <div class="text-danger" *ngIf="ClaimForm.controls.password.touched && ClaimForm.controls.password.hasError('required')">
+            Enter Password
+        </div>
+
+        <input type="text" name="claimReason" placeholder="Enter Claim Reason" formControlName="claimReason" [(ngModel)]=claim.claimReason><br>
+        <div class="text-danger" *ngIf="ClaimForm.controls.claimReason.touched && ClaimForm.controls.claimReason.hasError('required')">
+            Claim Reason required
+        </div>
+
+        <input type="number" name="claimAmount" placeholder="Enter Claim Amount" formControlName="claimAmount" [(ngModel)]=claim.claimAmount><br>
+        <div class="text-danger" *ngIf="ClaimForm.controls.claimAmount.touched && ClaimForm.controls.claimAmount.hasError('required')">
+            Claim Amount required
+        </div>
+
+        <input type="submit" value="Claim">
+    </form>
+</div>
