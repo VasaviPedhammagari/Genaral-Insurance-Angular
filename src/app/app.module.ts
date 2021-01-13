@@ -16,6 +16,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
 import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
+import { ClaimComponent } from './claim/claim.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.compo
     ForgotPasswordComponent,
     LoginComponent,
     PaymentSummaryComponent,
-    RenewInsuranceComponent
+    RenewInsuranceComponent,
+    ClaimComponent
   ],
   imports: [
     BrowserModule,

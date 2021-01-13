@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Login } from './appmodel/login';
 import { User } from './appmodel/user';
 import { Vehicle } from './appmodel/vehicle';
+import { Claim } from './appmodel/claim';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +26,9 @@ export class InsuranceService {
     console.log("registerVehicle working!");
     let url = "http://localhost:8181/register-vehicle";
     return this.http.post(url, vehicle);
+  }
+  claim(claim: Claim) : Observable<any>{
+    let url = "http://localhost:8181/claim";
+    return this.http.post(url, claim);  
   }
 }
