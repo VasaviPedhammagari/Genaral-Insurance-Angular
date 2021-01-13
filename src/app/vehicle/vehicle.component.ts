@@ -15,6 +15,7 @@ export class VehicleComponent implements OnInit {
   vehicle:Vehicle = new Vehicle();
   type: string[] = ['2-Wheeler', '4-Wheeler'];
   message: string;
+  price: number = 0;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { 
   }
@@ -42,7 +43,14 @@ export class VehicleComponent implements OnInit {
       if(response.status == 'SUCCESS') {
         let regNo = response.regNo;
         sessionStorage.setItem('regNo',String(regNo));
-        this.router.navigate(['choose-plan'])
+        this.price = parseInt(sessionStorage.getItem('price') || '{}');
+        // if(this.price > 0){
+        //   this.router.navigate(['payment']);
+        // }
+        // else{
+          this.router.navigate(['choose-plan']);
+        // }
+        
       }
       else
           this.message = response.message;
