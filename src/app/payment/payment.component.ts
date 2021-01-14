@@ -35,6 +35,7 @@ export class PaymentComponent implements OnInit {
   }
  doPayment(){
    alert(this.payment.paymentMode);
+   console.log(JSON.stringify(this.payment));
    this.payment.insurancePrice = this.motorInsurance.insurancePremium;
    this.payment.motorInsurance = this.motorInsurance;
    this.insuranceService.payment(this.payment).subscribe(response =>{
