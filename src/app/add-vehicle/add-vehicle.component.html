@@ -1,0 +1,13 @@
+<div id="form">
+<form [formGroup]="AddVehicleForm" (ngSubmit)="addVehicle()">
+    <input type="text" name="modelId" formControlName="modelId" placeholder="Id" [(ngModel)]="vehicleModel.modelId" /><br>
+    <input type="text" name="manufacturer" formControlName="manufacturer" placeholder="Manufacturer" [(ngModel)]="vehicleModel.manufacturer" /><br>
+    <input type="text" name="model" formControlName="model" placeholder="Model" [(ngModel)]="vehicleModel.model" /><br>
+    <input type="text" name="price" formControlName="price" placeholder="Price" [(ngModel)]="vehicleModel.price" /><br>
+    <select name="type" id="type"  [(ngModel)]="vehicleModel.type" formControlName="type">
+        <option *ngFor="let type of types" value="{{type}}">{{type}}</option>
+    </select> 
+    <br>
+    <button type="submit" [disabled]="!AddVehicleForm.valid" >Add</button>
+</form>
+</div>

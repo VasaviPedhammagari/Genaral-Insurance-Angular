@@ -68,4 +68,8 @@ export class InsuranceService {
     let url = "http://localhost:8181/claim";
     return this.http.post(url, claim);  
   }
+  addVehicle(vehicleModel: VehicleModel) : Observable<any> {
+    let url = "http://localhost:8181/addnewvehicle";
+    return this.http.post(url,vehicleModel);
+  }
 }

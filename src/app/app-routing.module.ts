@@ -15,6 +15,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
 import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 import { ClaimComponent } from './claim/claim.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'premium-calculate', component: PremiumCalulatorComponent },
   { path: 'show-plans', component: ShowPlansComponent },
   { path: 'renew-insurance', component: RenewInsuranceComponent},
+  { path: 'addVehicle', component: AddVehicleComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
