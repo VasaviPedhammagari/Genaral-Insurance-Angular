@@ -4,13 +4,14 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomFormsModule } from 'ng2-validation';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RecaptchaModule } from "ng-recaptcha";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
  
 import { HomeComponent } from './home/home.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { PremiumCalulatorComponent } from './premium-calulator/premium-calulator.component';
 import { ShowPlansComponent } from './show-plans/show-plans.component';
 import { InsurancePlanComponent } from './insurance-plan/insurance-plan.component';
@@ -34,6 +35,9 @@ import { ClaimComponent } from './claim/claim.component';
     PaymentComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    HomeComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
     LoginComponent,
     PaymentSummaryComponent,
     RenewInsuranceComponent,
@@ -44,7 +48,6 @@ import { ClaimComponent } from './claim/claim.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomFormsModule,
     HttpClientModule,
     RecaptchaModule,
   ],

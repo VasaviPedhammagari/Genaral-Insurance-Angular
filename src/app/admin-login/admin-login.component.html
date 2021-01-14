@@ -1,0 +1,18 @@
+<div id="form">
+    <h2 style="font-weight: normal;">ADMIN</h2>
+    <h5 style="font-weight: normal; color: red;">Access only for admin, Else try user login</h5>
+    <form [formGroup]="LoginForm" (ngSubmit)="adminCheck()">
+
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=adminLogin.email><br>
+        <div class="text-danger" *ngIf="LoginForm.controls.email.touched && LoginForm.controls.email.hasError('required')">
+            Email required
+        </div>
+
+        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=adminLogin.password><br>
+        <div class="text-danger" *ngIf="LoginForm.controls.password.touched && LoginForm.controls.password.hasError('required')">
+            Enter Password
+        </div>
+
+        <input type="submit" value="Login" >
+    </form>
+</div>

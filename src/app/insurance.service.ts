@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { adminLogin } from './appmodel/adminLogin';
 import { Estimate } from './appmodel/estimate';
 import { Login } from './appmodel/login';
 import { MotorInsurance } from './appmodel/motorInsurance';
@@ -34,8 +35,12 @@ export class InsuranceService {
   }
 
   fetchPremiums(vehicle: Vehicle): Observable<Estimate[]> {
-    let url = "http://localhost:8181//get-estimates";
+    let url = "http://localhost:8181/get-estimates";
     return this.http.post<Estimate[]>(url, vehicle);
+  }
+  adminlogin(adminLogin: adminLogin) : Observable<any>{
+    let url = "http://localhost:8181/adminlogin";
+    return this.http.post(url, adminLogin);  
   }
   registerVehicle(vehicle: Vehicle) :Observable<any> {
     console.log("registerVehicle working!");

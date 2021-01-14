@@ -4,6 +4,7 @@ import { Address } from '../appmodel/address';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
 import { Router } from '@angular/router';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-register',
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    console.log(JSON.stringify(this.user));
     if(this.user.password == this.user.password2){  
       this.user.address = this.address;
       this.insuranceService.registerUser(this.user).subscribe(response => {

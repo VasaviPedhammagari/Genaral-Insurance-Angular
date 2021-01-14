@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
+import { VehicleModel } from '../appmodel/vehicleModel';
 
 @Component({
   selector: 'app-vehicle',
@@ -15,16 +16,35 @@ export class VehicleComponent implements OnInit {
   vehicle:Vehicle = new Vehicle();
   type: string[] = ['2-Wheeler', '4-Wheeler'];
   message: string;
+  uname:string;
+  uid:string;
+
+  vehicleModels: VehicleModel[];
+  manufactureres: string[];
+  carModels: Array<string>;
+  chosenMod: string = "";
+  chosenCar: string = "";
+  models:string = "";
+  cars:string = "";
+  
   price: number = 0;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { 
   }
 
   public ngOnInit(): void { 
+    this.insuranceService.fetchVehicleModels().subscribe(response => {
+      this.vehicleModels = response;
+      this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
+      this.carModels = new Array<string>(this.vehicleModels.length);
+    })   
     this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
     this.vehicle.model = sessionStorage.getItem('model') || '';
     this.vehicle.purchaseDate = sessionStorage.getItem('purchaseDate') || '';  
     this.VehicleForm = this.fb.group({
+      vehicleType: ["", Validators.required],
+      models:["", Validators.required],
+      cars: ["", Validators.required],
       manufacturer: ["",Validators.required],
       model: ["",Validators.required],
       license: ["",Validators.required],
@@ -34,15 +54,19 @@ export class VehicleComponent implements OnInit {
       chassisno: ["",Validators.compose([Validators.required, Validators.pattern('/^[A-z]{17}$/')])]
     });
   }
-
+  modo() {
+    for (var i = 0; i < this.vehicleModels.length; i++) {
+      if (this.vehicleModels[i].manufacturer == this.chosenMod) {
+        this.carModels.push(this.vehicleModels[i].model);
+      }
+    }
+    this.carModels = this.carModels.filter(x => x != null) as string[];
+  }
   saveVehicle(){
-    console.log("saveVehicle working!");
-    //console.log(vehicle);
-    //const uname = sessionStorage.getItem('userName')  || '';
-    //const uid = sessionStorage.getItem('userId')  || '';
-    //console.log(uname+" "+uid);
+    console.log(JSON.stringify(this.vehicle));
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
+      console.log(this.vehicle.vehicleType);
       if(response.status == 'SUCCESS') {
         this.vehicle = response.vehicle;
         alert(this.vehicle.regNo);
