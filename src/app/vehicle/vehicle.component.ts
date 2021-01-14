@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
@@ -38,8 +38,6 @@ export class VehicleComponent implements OnInit {
       this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
       this.carModels = new Array<string>(this.vehicleModels.length);
     })   
-    this.uname = sessionStorage.getItem('userName')!;
-    this.uid = sessionStorage.getItem('userId')!;
     this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
     this.vehicle.model = sessionStorage.getItem('model') || '';
     this.vehicle.purchaseDate = sessionStorage.getItem('purchaseDate') || '';  
@@ -65,23 +63,24 @@ export class VehicleComponent implements OnInit {
     this.carModels = this.carModels.filter(x => x != null) as string[];
   }
   saveVehicle(){
+    console.log(JSON.stringify(this.vehicle));
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       console.log(this.vehicle.vehicleType);
       if(response.status == 'SUCCESS') {
-        let regNo = response.registeredVehicleId;
-        sessionStorage.setItem('regNo',String(regNo));
+        this.vehicle = response.vehicle;
+        alert(this.vehicle.regNo);
+        sessionStorage.setItem('vehicle',JSON.stringify(this.vehicle));
         this.price = parseInt(sessionStorage.getItem('price') || '{}');
         if(this.price > 0){
           this.router.navigate(['payment']);
         }
         else{
           this.router.navigate(['choose-plan']);
-        }
-        
+        }        
       }
       else
-          this.message = response.message;
+          alert(response.message);
     })    
   }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MotorInsurance } from '../appmodel/motorInsurance';
+import { User } from '../appmodel/user';
+import { Vehicle } from '../appmodel/vehicle';
 
 @Component({
   selector: 'app-payment-summary',
@@ -6,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-summary.component.css']
 })
 export class PaymentSummaryComponent implements OnInit {
+  paymentId: number;
+  motorInsurance: MotorInsurance = new MotorInsurance();
+  vehicle: Vehicle = new Vehicle();
+  user : User = new User();
 
-  constructor() { }
+  constructor() { 
+    this.paymentId = parseInt(sessionStorage.getItem('paymentId') || '{}');
+    this.motorInsurance = JSON.parse(sessionStorage.getItem('motorInsurance') || '{}');
+  }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,7 @@ import { Address } from '../appmodel/address';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
 import { Router } from '@angular/router';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,6 @@ export class RegisterComponent implements OnInit {
   RegForm:FormGroup;
   user:User = new User();
   address:Address = new Address();
-  message: string;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
    }
@@ -40,19 +40,20 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    console.log(JSON.stringify(this.user));
     if(this.user.password == this.user.password2){  
       this.user.address = this.address;
       this.insuranceService.registerUser(this.user).subscribe(response => {
-        alert(JSON.stringify(response));
+        console.log(JSON.stringify(response));
         if(response.status == 'SUCCESS') {
-          let userId = response.registeredUserId;
-          let userName = response.registeredUserName;
-          sessionStorage.setItem('userId', String(userId));
-          sessionStorage.setItem('userName', userName);
+          alert(response.message);
+          this.user = response.user;
+          alert(this.user.userId);
+          sessionStorage.setItem('user', JSON.stringify(this.user));
           this.router.navigate(['vehicle-registration']);
         }
         else
-          this.message = response.message;
+          alert(response.message);
     })
     }
     else{
