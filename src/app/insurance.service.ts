@@ -8,6 +8,8 @@ import { User } from './appmodel/user';
 import { Vehicle } from './appmodel/vehicle';
 import { Claim } from './appmodel/claim';
 import { VehicleModel } from './appmodel/vehicleModel';
+import { InsuranceClaim } from './appmodel/insuranceClaim';
+import { ValidateClaim } from './appmodel/validate-claim';
 
 @Injectable({
   providedIn: 'root'
@@ -35,17 +37,35 @@ export class InsuranceService {
     let url = "http://localhost:8181/get-estimates";
     return this.http.post<Estimate[]>(url, vehicle);
   }
+
   adminlogin(adminLogin: adminLogin) : Observable<any>{
     let url = "http://localhost:8181/adminlogin";
     return this.http.post(url, adminLogin);  
   }
+
   registerVehicle(vehicle: Vehicle) :Observable<any> {
     console.log("registerVehicle working!");
     let url = "http://localhost:8181/register-vehicle";
     return this.http.post(url, vehicle);
   }
+
   claim(claim: Claim) : Observable<any>{
     let url = "http://localhost:8181/claim";
     return this.http.post(url, claim);  
+  }
+
+  fetchAllClaims(): Observable<InsuranceClaim[]> {
+    let url = "http://localhost:8181//validate";
+    return this.http.get<InsuranceClaim[]>(url);
+  }
+
+  validateClaim(validateClaim: ValidateClaim): Observable<any> {
+    let url = "http://localhost:8181//validate-claim";
+    return this.http.post(url, validateClaim);
+  }
+
+  denyClaim(validateClaim: ValidateClaim): Observable<any> {
+    let url = "http://localhost:8181//deny-claim";
+    return this.http.post(url, validateClaim);
   }
 }

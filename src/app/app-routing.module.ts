@@ -15,6 +15,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentSummaryComponent } from './payment-summary/payment-summary.component';
 import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 import { ClaimComponent } from './claim/claim.component';
+import { ValidateClaimComponent } from './validate-claim/validate-claim.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'premium-calculate', component: PremiumCalulatorComponent },
   { path: 'show-plans', component: ShowPlansComponent },
-  { path: 'renew-insurance', component: RenewInsuranceComponent},
+  { path: 'renew-insurance', component: RenewInsuranceComponent },
+  { path: 'validate', component: ValidateClaimComponent },
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 

@@ -1,0 +1,29 @@
+<div id="form">
+    <table>
+        <tr>
+            <th>Claim Number</th>
+            <th>Claim Amount Requested</th>
+            <th>Claim Date</th>
+            <th>Claim Reason</th>
+            <th>Claim Status</th>
+            <th>Policy Number</th>
+            <th>Approve</th>
+            <th>Deny</th>
+        </tr>
+        <tr *ngFor="let claim of claims">
+            <td>{{claim.claimNumber}}</td>
+            <td>{{claim.claimAmount}}</td>
+            <td>{{claim.claimDate}}</td>
+            <td>{{claim.claimReason}}</td>
+            <td>{{claim.claimStatus}}</td>
+            <td>{{claim.insuranceDetails.policyNumber}}</td>
+            <td>
+                <input type="number" [(ngModel)]=claimAmount placeholder="Enter Claim Amount" /><br>
+                <button class="button" (click)="onClickApprove(claim.claimNumber)">Approve</button>
+            </td>
+            <td>
+                <button class="button" (click)="onClickDeny(claim.claimNumber)">Deny Claim</button>
+            </td>
+        </tr>
+    </table>
+</div>
