@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InsuranceDetails } from '../appmodel/insuranceDetails';
+import { MotorInsurance } from '../appmodel/motorInsurance';
+import { User } from '../appmodel/user';
+import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 
 @Component({
@@ -9,23 +11,35 @@ import { InsuranceService } from '../insurance.service';
   styleUrls: ['./insurance-plan.component.css']
 })
 export class InsurancePlanComponent implements OnInit {
+  
+  motorInsurance:MotorInsurance = new MotorInsurance();
+  vehicle: Vehicle = new Vehicle();
+  user : User = new User();
 
-  insuranceDetails: InsuranceDetails = new InsuranceDetails();
+  constructor(private router: Router,private insuranceService: InsuranceService) { }
 
-  constructor(private router: Router, private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
-    const regNo = sessionStorage.getItem('regNo');
-    const uid = sessionStorage.getItem('userName');
-    const uname = sessionStorage.getItem('userId');
-    console.log(regNo+" "+uid+" "+uname );
+    this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
   }
 
-  saveData(data: any) {
-    alert("plan : " + data.plan);
-    alert("plan term : " + data.planTerm + " year ");
-    this.insuranceDetails.planType = data.plan;
-    this.insuranceDetails.noOfYrs = data.planTerm;
-    this.router.navigate(['payment']);
+  saveData(data:any){
+    this.motorInsurance.planType=data.plan;
+    this.motorInsurance.noOfYrs=data.planTerm;  
+    this.motorInsurance.vehicle= this.vehicle;
+    this.motorInsurance.user = this.user;
+    console.log(JSON.stringify(this.motorInsurance));
+    this.insuranceService.choosePlan(this.motorInsurance).subscribe(response =>{
+      console.log(JSON.stringify(response));
+      if(response.status == 'SUCCESS'){
+          this.motorInsurance = response.motorInsurance;
+          alert(this.motorInsurance.policyNumber);
+          alert(this.motorInsurance.insurancePremium);
+          sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+          this.router.navigate(['payment']);
+      }else
+       alert(response.message);
+    })
   }
 }

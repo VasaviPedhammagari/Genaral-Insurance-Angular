@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { adminLogin } from './appmodel/adminLogin';
 import { Estimate } from './appmodel/estimate';
 import { Login } from './appmodel/login';
+import { MotorInsurance } from './appmodel/motorInsurance';
+import { Payment } from './appmodel/payment';
+import { RenewDetails } from './appmodel/renewDetails';
 import { User } from './appmodel/user';
 import { Vehicle } from './appmodel/vehicle';
 import { Claim } from './appmodel/claim';
@@ -47,6 +50,21 @@ export class InsuranceService {
     console.log("registerVehicle working!");
     let url = "http://localhost:8181/register-vehicle";
     return this.http.post(url, vehicle);
+  }
+
+  renew(renewDetails:RenewDetails) :Observable<any> {
+    let url = "http://localhost:8181/renew";
+    return this.http.post(url,renewDetails);
+  }
+
+  choosePlan(motorInsurance: MotorInsurance) : Observable<any> {
+     let url = "http://localhost:8181/choose-plan";
+     return this.http.post(url,motorInsurance);
+  }
+
+  payment(payment: Payment) :Observable<any> {
+    let url = "http://localhost:8181/payment";
+    return this.http.post(url,payment);
   }
 
   claim(claim: Claim) : Observable<any>{
