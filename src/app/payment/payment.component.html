@@ -1,4 +1,6 @@
 <div id="form">
+    <div class="box">Payment</div>
+    <h4 style="text-align:left">{{ "Amount to be paid : Rs " +motorInsurance.insurancePremium +" only"}}</h4>
     <form [formGroup]="PaymentForm" (ngSubmit)="doPayment()">
        <div class="box1">Choose Payment Method</div><br><br>
           <input type="radio" name="paymentMode" id="upi" value='UPI' formControlName="paymentMode" [(ngModel)]=payment.paymentMode />

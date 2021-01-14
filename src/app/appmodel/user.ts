@@ -1,6 +1,7 @@
 import { Address } from "./address";
 
 export class User{
+  userId: number;
   userName: string;
   email: string;
   dateOfBirth:string;

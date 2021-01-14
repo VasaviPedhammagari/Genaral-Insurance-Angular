@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   RegForm:FormGroup;
   user:User = new User();
   address:Address = new Address();
-  message: string;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
    }
@@ -43,16 +42,16 @@ export class RegisterComponent implements OnInit {
     if(this.user.password == this.user.password2){  
       this.user.address = this.address;
       this.insuranceService.registerUser(this.user).subscribe(response => {
-        alert(JSON.stringify(response));
+        console.log(JSON.stringify(response));
         if(response.status == 'SUCCESS') {
-          let userId = response.userId;
-          let userName = response.userName;
-          sessionStorage.setItem('userId', String(userId));
-          sessionStorage.setItem('userName', userName);
+          alert(response.message);
+          this.user = response.user;
+          alert(this.user.userId);
+          sessionStorage.setItem('user', JSON.stringify(this.user));
           this.router.navigate(['vehicle-registration']);
         }
         else
-          this.message = response.message;
+          alert(response.message);
     })
     }
     else{

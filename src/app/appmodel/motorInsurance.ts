@@ -2,6 +2,7 @@ import { User } from "./user";
 import { Vehicle } from "./vehicle";
 
 export class MotorInsurance{
+    policyNumber: string;
     planType: string;
     noOfYrs: number;
     planStartDate: string;

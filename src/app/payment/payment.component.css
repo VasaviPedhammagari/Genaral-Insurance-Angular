@@ -40,6 +40,14 @@ input,
   text-decoration: none; /* remove underline from anchors */
 }
 
+.box{
+    text-align:center;
+    background-color:rgb(230, 131, 66);
+    padding: 15px;
+    margin : 0 50px 0 50px;
+    font-size: 30px; 
+}
+
 input[type=radio]{
     float : left;
     margin : 20px 0px 20px 20px;
@@ -49,7 +57,7 @@ input[type=radio]{
 input[type=submit]{
     float: center;
     padding: 5 15px 5px 15px;
-    margin: 0 200px 0 5px;
+    margin: 0 150px 0 150px;
     background-color: rgb(230, 131, 66);
 }
 
