@@ -23,6 +23,7 @@ import { ClaimComponent } from './claim/claim.component';
 import { ValidateClaimComponent } from './validate-claim/validate-claim.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginProfileComponent } from './login-profile/login-profile.component';
     AddVehicleComponent,
     LoginProfileComponent,
     ValidateClaimComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

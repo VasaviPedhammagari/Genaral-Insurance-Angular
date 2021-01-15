@@ -8,4 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'GeneralInsurance-II';
 
+  userName: string;
+  ifUsername: boolean;
+
+  ngOnInit() {
+    this.userName = sessionStorage.getItem('userName') || '';
+    if(this.userName === ''){
+      this.ifUsername = false;
+    }
+    else{
+      this.ifUsername = true;
+    }
+  }
 }

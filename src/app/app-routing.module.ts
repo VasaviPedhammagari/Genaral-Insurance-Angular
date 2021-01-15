@@ -18,6 +18,7 @@ import { ClaimComponent } from './claim/claim.component';
 import { ValidateClaimComponent } from './validate-claim/validate-claim.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'renew-insurance', component: RenewInsuranceComponent},
   { path: 'addVehicle', component: AddVehicleComponent},
   { path: 'login-profile', component: LoginProfileComponent},
+  { path: 'logout', component: LogoutComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 

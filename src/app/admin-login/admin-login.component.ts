@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { adminLogin } from '../appmodel/adminLogin';
 import { InsuranceService } from '../insurance.service';
@@ -14,7 +15,7 @@ export class AdminLoginComponent implements OnInit {
   LoginForm:FormGroup;
   adminLogin:adminLogin = new adminLogin();
 
-  constructor(private fb: FormBuilder, private insuranceService: InsuranceService) { }
+  constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { }
 
   public ngOnInit(): void {
     this.LoginForm = this.fb.group({
@@ -25,8 +26,11 @@ export class AdminLoginComponent implements OnInit {
 
   adminCheck(){
     alert(JSON.stringify(this.adminLogin));
-    this.insuranceService.login(this.adminLogin).subscribe(response =>{
+    this.insuranceService.adminlogin(this.adminLogin).subscribe(response =>{
       alert(JSON.stringify(response));
+      if(response.status === 'SUCCESS'){
+        this.router.navigate(['/admindash']);
+      }
     })
   }
 }
