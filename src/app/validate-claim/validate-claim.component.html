@@ -1,0 +1,52 @@
+<div id="form">
+    <h2>Pending Claims</h2>
+    <table>
+        <tr>
+            <th>Claim Number</th>
+            <th>Claim Amount Requested</th>
+            <th>Claim Date</th>
+            <th>Claim Reason</th>
+            <th>Claim Status</th>
+            <th>Policy Number</th>
+            <th>Policy Type</th>
+            <th>Approve</th>
+            <th>Deny</th>
+        </tr>
+        <tr *ngFor="let claim of pendingClaims">
+            <td>{{claim.claimNumber}}</td>
+            <td>{{claim.claimAmount}}</td>
+            <td>{{claim.claimDate}}</td>
+            <td>{{claim.claimReason}}</td>
+            <td>{{claim.claimStatus}}</td>
+            <td>{{claim.motorInsurance.policyNumber}}</td>
+            <td>{{claim.motorInsurance.planType}}</td>
+            <td>
+                <input type="number" name="claimAmount" [(ngModel)]=claimAmount placeholder="Enter Claim Amount" /><br>
+                <button class="button" (click)="onClickApprove(claim.claimNumber)">Approve</button>
+            </td>
+            <td>
+                <button class="button" (click)="onClickDeny(claim.claimNumber)">Deny Claim</button>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Approved/Denied Claims</h2>
+    <table>
+        <tr>
+            <th>Claim Number</th>
+            <th>Claim Amount Approved</th>
+            <th>Claim Date</th>
+            <th>Claim Reason</th>
+            <th>Claim Status</th>
+            <th>Policy Number</th>
+        </tr>
+        <tr *ngFor="let claim of approvedClaims">
+            <td>{{claim.claimNumber}}</td>
+            <td>{{claim.claimAmount}}</td>
+            <td>{{claim.claimDate}}</td>
+            <td>{{claim.claimReason}}</td>
+            <td>{{claim.claimStatus}}</td>
+            <td>{{claim.motorInsurance.policyNumber}}</td>
+        </tr>
+    </table>
+</div>
