@@ -72,4 +72,8 @@ export class InsuranceService {
     let url = "http://localhost:8181/addnewvehicle";
     return this.http.post(url,vehicleModel);
   }
+  getVehicleList() :Observable<any> {
+    let url = "http://localhost:8181/listvehiclemodel";
+    return this.http.get<VehicleModel>(url);
+  }
 }
