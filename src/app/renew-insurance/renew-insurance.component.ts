@@ -20,6 +20,10 @@ export class RenewInsuranceComponent implements OnInit {
   motorInsurance: MotorInsurance=new MotorInsurance();
   vehicle: Vehicle = new Vehicle();
   user: User = new User();
+  phoneNo: number;
+  email: string;
+  policyNumbers: number[];
+  policyNumber: number;
 
   constructor(private fb:FormBuilder,private router:Router,private insuranceService: InsuranceService) { }
 
@@ -29,11 +33,17 @@ export class RenewInsuranceComponent implements OnInit {
       email:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])],
       phoneNumber:["",Validators.compose([Validators.required,Validators.pattern(/^\d{10}$/)])]
     });
+    this.policyNumbers = JSON.parse(sessionStorage.getItem('policyNumbers') || '{}');
+    this.phoneNo = parseInt(sessionStorage.getItem('mobileNumber') || '');
+    this.email = sessionStorage.getItem('email') || '';
   }
 
-  checkDetails(){
-    alert("policy number : "+ this.renewDetails.policyNumber);
-    alert("email id : "+this.renewDetails.email);
+  checkDetails(data: any){
+    alert("policy number : "+ data.policyNumber);
+    alert("email id : "+data.email);
+    this.renewDetails.phoneNo = this.phoneNo;
+    this.renewDetails.email = this.email;
+    this.renewDetails.policyNumber = this.policyNumber;
     this.insuranceService.renew(this.renewDetails).subscribe(response =>{
       //console.log(JSON.stringify(response));
       if(response.status == 'SUCCESS'){
