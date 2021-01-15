@@ -1,7 +1,8 @@
 <div id="form">
 <form [formGroup]="AddVehicleForm" (ngSubmit)="addVehicle()">
 <button type="button" (click)="displayVehicle()">View All</button>
-<button type="submit">Add</button>
+<button type="submit" [disabled]="!AddVehicleForm.valid">Add</button>
+<button type="button" (click)="backToAdminDash()">Back</button>
 <div *ngIf="vehicleList">
 <table>
     <thead>
