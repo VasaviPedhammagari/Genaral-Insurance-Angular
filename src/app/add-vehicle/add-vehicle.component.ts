@@ -36,15 +36,27 @@ export class AddVehicleComponent implements OnInit {
   }
   addVehicle(){
     this.insuranceService.addVehicle(this.vehicleModel).subscribe(response => {
-      alert(JSON.stringify(response));
+      //alert(JSON.stringify(response));
       if(response.status == 'SUCCESS') {
         alert("Vehicle added successfully");
-        this.router.navigate(['admindash']);
+        this.vehicleModel.modelId = 0;
+        this.vehicleModel.manufacturer = "";
+        this.vehicleModel.model = "";
+        this.vehicleModel.price = 0;
+        this.vehicleModel.type = "";
+        this.displayVehicle();
+        //this.router.navigate(['admindash']);
+      }
+      else if(response.status == 'FAILED'){
+        alert(response.message);
       }
       else {
-        alert("Failed to add Vehicle");
+        alert("Failed to add");
       }
     })
+  }
+  backToAdminDash(){
+    this.router.navigate(['admindash']);
   }
 
 }
