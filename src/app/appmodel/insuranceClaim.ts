@@ -1,4 +1,5 @@
 import { InsuranceDetails } from "./insuranceDetails";
+import { MotorInsurance } from "./motorInsurance";
 
 export class InsuranceClaim {
     claimNumber: number;
@@ -6,5 +7,5 @@ export class InsuranceClaim {
     claimDate: string;
     claimReason:string;
     claimAmount:number;
-    insuranceDetails: InsuranceDetails;
+    motorInsurance: MotorInsurance;
 }
