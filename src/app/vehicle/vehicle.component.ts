@@ -65,6 +65,8 @@ export class VehicleComponent implements OnInit {
     this.carModels = this.carModels.filter(x => x != null) as string[];
   }
   saveVehicle(){
+    this.vehicle.manufacturer = this.chosenMod;
+    this.vehicle.model = this.chosenCar;
     console.log(JSON.stringify(this.vehicle));
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
