@@ -95,6 +95,11 @@ export class InsuranceService {
     let url = "http://localhost:8181/insurancedetails?userId="+userId;
     return this.http.get<MotorInsurance[]>(url);
   }
+
+  claimDetails(policyNumber : number) : Observable<InsuranceClaim[]> {
+    let url = "http://localhost:8181/claimdetails?policyNumber="+policyNumber;
+    return this.http.get<InsuranceClaim[]>(url);
+  }
   
   getVehicleList() :Observable<any> {
     let url = "http://localhost:8181/listvehiclemodel";
