@@ -1,13 +1,36 @@
 <div id="form">
 <form [formGroup]="AddVehicleForm" (ngSubmit)="addVehicle()">
-    <input type="text" name="modelId" formControlName="modelId" placeholder="Id" [(ngModel)]="vehicleModel.modelId" /><br>
-    <input type="text" name="manufacturer" formControlName="manufacturer" placeholder="Manufacturer" [(ngModel)]="vehicleModel.manufacturer" /><br>
-    <input type="text" name="model" formControlName="model" placeholder="Model" [(ngModel)]="vehicleModel.model" /><br>
-    <input type="text" name="price" formControlName="price" placeholder="Price" [(ngModel)]="vehicleModel.price" /><br>
-    <select name="type" id="type"  [(ngModel)]="vehicleModel.type" formControlName="type">
+<button type="button" (click)="displayVehicle()">View All</button>
+<button type="submit">Add</button>
+<div *ngIf="vehicleList">
+<table>
+    <thead>
+        <th>Model Id</th>
+        <th>Manufatcurer</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Type</th>
+    </thead>
+    <tbody>
+    <tr>
+    <td><input type="text" name="modelId" formControlName="modelId" placeholder="Id" [(ngModel)]="vehicleModel.modelId" /></td>
+    <td><input type="text" name="manufacturer" formControlName="manufacturer" placeholder="Manufacturer" [(ngModel)]="vehicleModel.manufacturer" /></td>
+    <td><input type="text" name="model" formControlName="model" placeholder="Model" [(ngModel)]="vehicleModel.model" /></td>
+    <td><input type="text" name="price" formControlName="price" placeholder="Price" [(ngModel)]="vehicleModel.price" /></td>
+    <td><select name="type" id="type"  [(ngModel)]="vehicleModel.type" formControlName="type">
         <option *ngFor="let type of types" value="{{type}}">{{type}}</option>
-    </select> 
-    <br>
-    <button type="submit" [disabled]="!AddVehicleForm.valid" >Add</button>
+    </select></td>
+    </tr>
+    
+    <tr *ngFor="let vehicle of vehicleList">
+        <td>{{ vehicle.modelId }}</td>
+        <td>{{ vehicle.manufacturer }}</td>
+        <td>{{ vehicle.model }}</td>
+        <td>{{ vehicle.price }}</td>
+        <td>{{ vehicle.type }}</td>
+    </tr>
+</tbody> 
+</table> 
+</div>
 </form>
 </div>

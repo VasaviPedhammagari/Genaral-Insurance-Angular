@@ -14,8 +14,10 @@ export class AddVehicleComponent implements OnInit {
   AddVehicleForm:FormGroup;
   vehicleModel:VehicleModel = new VehicleModel();
   types = ['2-Wheeler', '4-Wheeler'];
+  vehicleList:any=[];
 
-  constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { }
+  constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {}
+  
 
   public ngOnInit(): void {
     this.AddVehicleForm = this.fb.group({
@@ -23,8 +25,14 @@ export class AddVehicleComponent implements OnInit {
       manufacturer : ["",Validators.required],
       model : ["",Validators.required],
       price: ["",Validators.required],
-      type: ["",Validators.required]
+      type: ["",Validators.required],
+      
     })
+  }
+  displayVehicle(){
+    this.insuranceService.getVehicleList().subscribe(response => {
+      this.vehicleList = response.vehicleModels;
+    });
   }
   addVehicle(){
     this.insuranceService.addVehicle(this.vehicleModel).subscribe(response => {
