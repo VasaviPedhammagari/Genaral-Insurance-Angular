@@ -55,8 +55,6 @@ export class VehicleComponent implements OnInit {
     });
   }
   modo() {
-    alert(this.chosenMod);
-    alert(this.chosenCar);
     for (var i = 0; i < this.vehicleModels.length; i++) {
       if (this.vehicleModels[i].manufacturer == this.chosenMod) {
         this.carModels.push(this.vehicleModels[i].model);
@@ -70,13 +68,11 @@ export class VehicleComponent implements OnInit {
     console.log(JSON.stringify(this.vehicle));
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
-    alert(this.chosenCar);
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       console.log(this.vehicle.vehicleType);
       if(response.status == 'SUCCESS') {
         this.vehicle = response.vehicle;
-        alert(this.vehicle.regNo);
         sessionStorage.setItem('vehicle',JSON.stringify(this.vehicle));
         this.price = parseInt(sessionStorage.getItem('price') || '{}');
         if (this.price > 0) {
