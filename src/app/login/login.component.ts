@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
         alert(response.userName);
         sessionStorage.setItem('userName', response.userName);
         sessionStorage.setItem('userId', response.userId);
-        this.router.navigate(['login-profile']);
+        this.router.navigate(['login-profile']).then( () => {
+          window.location.reload();
+        });
       }
     })
   }

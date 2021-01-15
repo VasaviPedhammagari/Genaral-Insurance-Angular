@@ -9,13 +9,18 @@
 <div id="navigation">
     <ul>
         <li><a routerLink="home">Home</a></li>
-        <li><a routerLink="login">Login</a></li>
+        <li><a *ngIf="!ifUsername" routerLink="login">Login</a></li>
+        <li><a *ngIf="ifUsername" routerLink="login-profile">View Profile</a></li>
         <li><a routerLink="contact">Contact</a></li>
         <li><a routerLink="aboutus">About Us</a></li>
         <li><a routerLink="help">Help</a></li>
         <li><a routerLink="faq">FAQ</a></li>
-        <li style="float: right;"><a routerLink="adminLogin">Admin login</a></li>
-        <li style="float: right;"><a routerLink="register">Sign Up/Register</a></li>
+        <li *ngIf="ifUsername" style="float: right;">
+            <div id="userName">Welcome {{userName}}</div>
+        </li>
+        <li *ngIf="!ifUsername" style="float: right;"><a routerLink="adminLogin">Admin login</a></li>
+        <li *ngIf="!ifUsername" style="float: right;"><a routerLink="register">Sign Up/Register</a></li>
+        <li *ngIf="ifUsername" style="float: right;"><a routerLink="logout">Logout</a></li>
     </ul>
 </div>
 <router-outlet></router-outlet>
