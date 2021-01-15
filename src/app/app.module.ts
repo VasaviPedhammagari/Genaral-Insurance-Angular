@@ -21,6 +21,7 @@ import { PaymentSummaryComponent } from './payment-summary/payment-summary.compo
 import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 import { ClaimComponent } from './claim/claim.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { LoginProfileComponent } from './login-profile/login-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
     PaymentSummaryComponent,
     RenewInsuranceComponent,
     ClaimComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    LoginProfileComponent
   ],
   imports: [
     BrowserModule,

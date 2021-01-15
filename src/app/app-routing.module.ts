@@ -16,6 +16,7 @@ import { PaymentSummaryComponent } from './payment-summary/payment-summary.compo
 import { RenewInsuranceComponent } from './renew-insurance/renew-insurance.component';
 import { ClaimComponent } from './claim/claim.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { LoginProfileComponent } from './login-profile/login-profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'show-plans', component: ShowPlansComponent },
   { path: 'renew-insurance', component: RenewInsuranceComponent},
   { path: 'addVehicle', component: AddVehicleComponent},
+  { path: 'login-profile', component: LoginProfileComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
@@ -46,4 +48,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent,
                                     ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent, AdminLoginComponent,
-                                     AdminDashboardComponent, RenewInsuranceComponent, ClaimComponent]
+                                     AdminDashboardComponent, RenewInsuranceComponent, ClaimComponent, LoginProfileComponent]
