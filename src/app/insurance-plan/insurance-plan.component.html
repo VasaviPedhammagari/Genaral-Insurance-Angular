@@ -1,39 +1,47 @@
+<div class="container">
+    <ul class="progressbar">
+        <li>Step 1 Register</li>
+        <li>Step 2 Vehicle Info</li>
+        <li class="active">Step 3 Choose Plan</li>
+        <li>Step 4 Payment</li>
+    </ul>
+</div>
 <div id="form">
-<form #planForm="ngForm" (ngSubmit)="saveData(planForm.value)">
+    <form #planForm="ngForm" (ngSubmit)="saveData(planForm.value)">
 
-<div class="box">Plans</div><br>
-<div class="box1">Choose your plan</div><br><br>
+        <div class="box">Plans</div><br>
+        <div class="box1">Choose your plan</div><br><br>
 
-<ul class="donate-now">
-<li>
-    <input type="radio" name = "plan" value="Third Party Liability" id="thirdparty" ngModel/>
-    <label for = "thirdparty" >Third Party Liability</label>
-</li>
-<li>
-    <input type="radio" name = "plan" value="Comprehensive" id="comprehensive" ngModel/>
-    <label for = "comprehensive">Comprehensive</label>
-</li>
-</ul>
-<br><br><br><br>
-<div class="box1">Choose your plan term</div><br><br>
+        <ul class="donate-now">
+            <li>
+                <input type="radio" name="plan" value="Third Party Liability" id="thirdparty" ngModel/>
+                <label for="thirdparty">Third Party Liability</label>
+            </li>
+            <li>
+                <input type="radio" name="plan" value="Comprehensive" id="comprehensive" ngModel/>
+                <label for="comprehensive">Comprehensive</label>
+            </li>
+        </ul>
+        <br><br><br><br>
+        <div class="box1">Choose your plan term</div><br><br>
 
-<ul class="donate-now">
-<li>
-   <input type="radio" name = "planTerm" value=1 id="oneyrplan" ngModel/>
-   <label for = "oneyrplan">One Year Plan</label>
-</li>
-<br><br><br>
-<li>
-   <input type="radio" name = "planTerm" value=2 id="twoyrplan" ngModel/>
-   <label for = "twoyrplan">Two Year Plan</label>
-</li>
-<br><br><br>
-<li>
-   <input type="radio" name = "planTerm" value=3 id="threeyrplan" ngModel/>
-   <label for = "threeyrplan">Three year Plan</label>
-</li>
-</ul>
-<br><br><br><br>
-   <input type="submit" value="Make Payment"/>
-</form>
+        <ul class="donate-now">
+            <li>
+                <input type="radio" name="planTerm" value=1 id="oneyrplan" ngModel/>
+                <label for="oneyrplan">One Year Plan</label>
+            </li>
+            <br><br><br>
+            <li>
+                <input type="radio" name="planTerm" value=2 id="twoyrplan" ngModel/>
+                <label for="twoyrplan">Two Year Plan</label>
+            </li>
+            <br><br><br>
+            <li>
+                <input type="radio" name="planTerm" value=3 id="threeyrplan" ngModel/>
+                <label for="threeyrplan">Three year Plan</label>
+            </li>
+        </ul>
+        <br><br><br><br>
+        <input type="submit" value="Make Payment" />
+    </form>
 </div>
