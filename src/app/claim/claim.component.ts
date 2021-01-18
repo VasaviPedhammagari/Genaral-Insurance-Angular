@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { Claim } from '../appmodel/claim';
 import { InsuranceService } from '../insurance.service';
+//change
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-claim',
@@ -14,7 +17,8 @@ export class ClaimComponent implements OnInit {
   ClaimForm:FormGroup;
   claim:Claim = new Claim();
 
-  constructor(private fb: FormBuilder, private insuranceService: InsuranceService) { }
+
+  constructor(private fb: FormBuilder,private router:Router, private insuranceService: InsuranceService) { }
 
   public ngOnInit(): void {
     this.ClaimForm = this.fb.group({
@@ -25,6 +29,7 @@ export class ClaimComponent implements OnInit {
       claimAmount: ["",Validators.required]
   });
 }
+
 
 claimCheck(){
   alert(JSON.stringify(this.claim));

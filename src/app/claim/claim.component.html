@@ -12,11 +12,6 @@
             Email required
         </div>
 
-        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=claim.password><br>
-        <div class="text-danger" *ngIf="ClaimForm.controls.password.touched && ClaimForm.controls.password.hasError('required')">
-            Enter Password
-        </div>
-
         <input type="text" name="claimReason" placeholder="Enter Claim Reason" formControlName="claimReason" [(ngModel)]=claim.claimReason><br>
         <div class="text-danger" *ngIf="ClaimForm.controls.claimReason.touched && ClaimForm.controls.claimReason.hasError('required')">
             Claim Reason required
