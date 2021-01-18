@@ -20,6 +20,7 @@ export class InsurancePlanComponent implements OnInit {
   appliedEstimates: Estimate[];
   type: string = '';
   years: string = '';
+  buttonType: string;
 
   constructor(private router: Router, private insuranceService: InsuranceService) { }
 
