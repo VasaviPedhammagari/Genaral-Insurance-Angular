@@ -13,6 +13,7 @@ import { Claim } from './appmodel/claim';
 import { VehicleModel } from './appmodel/vehicleModel';
 import { InsuranceClaim } from './appmodel/insuranceClaim';
 import { ValidateClaim } from './appmodel/validate-claim';
+import { UserDetails } from './appmodel/user-details';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +107,10 @@ export class InsuranceService {
     return this.http.get<VehicleModel>(url);
   }
 
+  getUserList() :Observable<any> {
+    let url = "http://localhost:8181/userdetails";
+    return this.http.get<UserDetails>(url);
+  }
   updateProfile(user: User) :Observable<any> {
     let url = "http://localhost:8181/update";
     return this.http.post(url, user);

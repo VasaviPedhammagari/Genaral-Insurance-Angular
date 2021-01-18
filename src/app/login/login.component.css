@@ -30,6 +30,11 @@ input[type=submit]{
     background-color: rgb(230, 131, 66);
 }
 
+a {
+    color: rgb(71, 24, 9);
+    text-decoration: none;
+}
+
 div.text-danger{
     color: red;
     text-align: right;
