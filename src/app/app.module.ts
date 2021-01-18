@@ -25,6 +25,7 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     ValidateClaimComponent,
     AddVehicleComponent,
     LogoutComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

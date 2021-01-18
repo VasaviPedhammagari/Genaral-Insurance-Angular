@@ -96,6 +96,11 @@ export class InsuranceService {
     let url = "http://localhost:8181/insurancedetails?userId="+userId;
     return this.http.get<MotorInsurance[]>(url);
   }
+
+  claimDetails(policyNumber : number) : Observable<InsuranceClaim[]> {
+    let url = "http://localhost:8181/claimdetails?policyNumber="+policyNumber;
+    return this.http.get<InsuranceClaim[]>(url);
+  }
   
   getVehicleList() :Observable<any> {
     let url = "http://localhost:8181/listvehiclemodel";
@@ -106,4 +111,14 @@ export class InsuranceService {
     let url = "http://localhost:8181/userdetails";
     return this.http.get<UserDetails>(url);
   }
+  updateProfile(user: User) :Observable<any> {
+    let url = "http://localhost:8181/update";
+    return this.http.post(url, user);
+  }
+
+  fetchUserDetails(userId : number) : Observable<User> {
+    let url = "http://localhost:8181/user-details?userId="+userId;
+    return this.http.get<User>(url);
+  }
+
 }

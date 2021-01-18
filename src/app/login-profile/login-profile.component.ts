@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MotorInsurance } from '../appmodel/motorInsurance';
+import { InsuranceClaim } from '../appmodel/insuranceClaim';
 import { User } from '../appmodel/user';
 import { InsuranceService } from '../insurance.service';
 
@@ -16,8 +17,13 @@ export class LoginProfileComponent implements OnInit {
   userId : number;
   userName : string;
   motorInsuranceList : MotorInsurance[];
+  //policyNumberList : Array<number>;
+  length1:number;
+  length2:number;
+  claimNumber : number;
+  insuranceClaimList : InsuranceClaim[];
+  claimNumberList : Array<number>;
   policyNumberList : number[];
-  length:number;
   user: User;
 
   ngOnInit(): void {
@@ -34,10 +40,14 @@ export class LoginProfileComponent implements OnInit {
         }​​
         return 0;
      }​​);
-      this.length = this.motorInsuranceList.length;
+      this.length1 = this.motorInsuranceList.length;
       this.policyNumberList = new Array<number>(this.motorInsuranceList.length);
-      for(var i =0; i < this.length;i++){
+      for(var i =0; i < this.length1;i++){
         console.log(JSON.stringify(this.motorInsuranceList[i]));
+        this.insuranceService.claimDetails(parseInt(this.motorInsuranceList[i].policyNumber)).subscribe(response => {
+          this.insuranceClaimList = response;
+          this.claimNumberList = new Array<number>(this.insuranceClaimList.length);
+        })
         this.policyNumberList[i]=parseInt(this.motorInsuranceList[i].policyNumber);
         this.user = this.motorInsuranceList[i].user;
       }
@@ -45,6 +55,7 @@ export class LoginProfileComponent implements OnInit {
       sessionStorage.setItem('policyNumbers',JSON.stringify(this.policyNumberList));
       sessionStorage.setItem('email',this.user.email);
       sessionStorage.setItem('mobileNumber',String(this.user.phoneNo));
+      sessionStorage.setItem('userDetails', JSON.stringify(this.user));
       console.log(JSON.stringify(this.policyNumberList));
     })
   }

@@ -20,6 +20,7 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from "./user-details/user-details.component";
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,6 +47,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' },
   { path: 'userdetails', component: UserDetailsComponent}
+  { path: 'update', component: UpdateProfileComponent},
+  { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
 @NgModule({

@@ -1,36 +1,44 @@
+<div class="container">
+    <ul class="progressbar">
+        <li>Step 1 Register</li>
+        <li>Step 2 Vehicle Info</li>
+        <li>Step 3 Choose Plan</li>
+        <li class="active">Step 4 Payment</li>
+    </ul>
+</div>
 <div id="form">
     <div class="box">Payment</div>
     <h4 style="text-align:left">{{ "Amount to be paid : Rs " +motorInsurance.insurancePremium +" only"}}</h4>
     <form [formGroup]="PaymentForm" (ngSubmit)="doPayment()">
-       <div class="box1">Choose Payment Method</div><br><br>
-          <input type="radio" name="paymentMode" id="upi" value='UPI' formControlName="paymentMode" [(ngModel)]=payment.paymentMode />
-          <label for="upi">UPI</label>
+        <div class="box1">Choose Payment Method</div><br><br>
+        <input type="radio" name="paymentMode" id="upi" value='UPI' formControlName="paymentMode" [(ngModel)]=payment.paymentMode />
+        <label for="upi">UPI</label>
 
-          <input type="radio" name="paymentMode" id="card" value='Card' formControlName="paymentMode" [(ngModel)]=payment.paymentMode/>
-          <label for="card">Card</label>
-          <div class="text-danger" *ngIf="PaymentForm.controls.paymentMode.touched && PaymentForm.controls.paymentMode.hasError('required')">
-             Please choose payment method
-          </div>
-          <br><br><br>
-          <div [ngSwitch]="payment.paymentMode">
-              <div *ngSwitchCase="'UPI'">
-               <input type="text" name="upiId" placeholder="Enter your Upi Id here" formControlName="upiId"/>
-               <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('required')">
-                Upi Id required
-               </div>
-               <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('pattern')">
-                Incorrect Upi Id pattern
-               </div>
-              </div>
-              <div *ngSwitchCase="'Card'">
+        <input type="radio" name="paymentMode" id="card" value='Card' formControlName="paymentMode" [(ngModel)]=payment.paymentMode/>
+        <label for="card">Card</label>
+        <div class="text-danger" *ngIf="PaymentForm.controls.paymentMode.touched && PaymentForm.controls.paymentMode.hasError('required')">
+            Please choose payment method
+        </div>
+        <br><br><br>
+        <div [ngSwitch]="payment.paymentMode">
+            <div *ngSwitchCase="'UPI'">
+                <input type="text" name="upiId" placeholder="Enter your Upi Id here" formControlName="upiId" />
+                <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('required')">
+                    Upi Id required
+                </div>
+                <div class="text-danger" *ngIf="PaymentForm.controls.upiId.touched && PaymentForm.controls.upiId.hasError('pattern')">
+                    Incorrect Upi Id pattern
+                </div>
+            </div>
+            <div *ngSwitchCase="'Card'">
                 <label>Enter Card details:</label> <br>
 
-                <input type="text" name="cardHolderName" placeholder="Enter Cardholder Name " formControlName="cardHolderName"/>
+                <input type="text" name="cardHolderName" placeholder="Enter Cardholder Name " formControlName="cardHolderName" />
                 <div class="text-danger" *ngIf="PaymentForm.controls.cardHolderName.touched && PaymentForm.controls.cardHolderName.hasError('required')">
-                 Name required
+                    Name required
                 </div>
 
-                <input type="text" name="cardNumber" placeholder="Enter CardNumber"formControlName="cardNumber" />
+                <input type="text" name="cardNumber" placeholder="Enter CardNumber" formControlName="cardNumber" />
                 <div class="text-danger" *ngIf="PaymentForm.controls.cardNumber.touched && PaymentForm.controls.cardNumber.hasError('required')">
                     Card Number required
                 </div>
@@ -41,16 +49,16 @@
                 <div class="text-danger" *ngIf="PaymentForm.controls.expiryDate.touched && PaymentForm.controls.expiryDate.hasError('required')">
                     card expiry details are required
                 </div>
-   
+
                 <input type="text" name="cvv" placeholder="cvv" formControlName="cvv" />
                 <div class="text-danger" *ngIf="PaymentForm.controls.cvv.touched && PaymentForm.controls.cvv.hasError('required')">
                     cvv required
                 </div>
                 <div class="text-danger" *ngIf="PaymentForm.controls.cvv.touched && PaymentForm.controls.cvv.hasError('pattern')">
                     cvv must be 3 digits
-                </div>            
+                </div>
             </div>
-          </div>
-        <input type="submit" value="Continue to Checkout"/>
+        </div>
+        <input type="submit" value="Continue to Checkout" />
     </form>
 </div>

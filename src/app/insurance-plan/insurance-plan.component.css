@@ -1,4 +1,4 @@
-#form{
+#form {
     margin: auto;
     width: 50%;
     text-align: center;
@@ -10,44 +10,46 @@
 
 input,
 .btn {
-  border-style: solid;
-  border-color:black;
-  border-radius: 4px;
-  margin: 10px 30px 0 20px;
-  opacity: 0.85;
-  font-size: 15px;
-  line-height: 20px;
-  background-color:rgb(230, 131, 66);
-  text-decoration: none; /* remove underline from anchors */
+    border-style: solid;
+    border-color: black;
+    border-radius: 4px;
+    margin: 10px 30px 0 20px;
+    opacity: 0.85;
+    font-size: 15px;
+    line-height: 20px;
+    background-color: rgb(230, 131, 66);
+    text-decoration: none;
+    /* remove underline from anchors */
 }
 
-*{
+* {
     box-sizing: border-box;
 }
-#xyz{
-    display : none;
+
+#xyz {
+    display: none;
 }
 
-input[type=submit]{
+input[type=submit] {
     float: center;
     padding: 5px 15px 5px 15px;
     background-color: rgb(230, 131, 66);
 }
 
-.box{
-    text-align:center;
-    background-color:rgb(230, 131, 66);
+.box {
+    text-align: center;
+    background-color: rgb(230, 131, 66);
     padding: 15px;
-    margin : 0 50px 0 50px;
-    font-size: 30px; 
+    margin: 0 50px 0 50px;
+    font-size: 30px;
 }
 
-.box1{
+.box1 {
     float: left;
-    text-align:center;
+    text-align: center;
     padding: 5px 10px 5px 10px;
-    font-size: 15px; 
-    border-style :solid;
+    font-size: 15px;
+    border-style: solid;
     border-width: 2px;
     background-color: white;
     margin: 0 20px 0 20px;
@@ -57,40 +59,154 @@ input[type=submit]{
     list-style-type: none;
     margin: 0 0 0 0;
     padding: 0;
-  }
-  
-  .donate-now li {
+}
+
+.donate-now li {
     float: left;
     margin: 0 100px 0 0;
     width: 100px;
     height: 40px;
-  }
-  
-  .donate-now label,
-  .donate-now input {
+}
+
+.donate-now label,
+.donate-now input {
     display: block;
     position: absolute;
     background-color: rgb(230, 131, 66);
     padding: 10px 25px 10px 25px;
     border-style: solid;
-    border-color:black;
+    border-color: black;
     border-radius: 4px;
     margin: 10px 30px 0 20px;
     opacity: 0.85;
     font-size: 15px;
     line-height: 20px;
-  }
-  
-  .donate-now input[type="radio"] {
+}
+
+.donate-now input[type="radio"] {
     opacity: 0.01;
     z-index: 100;
-  }
-  
-  .donate-now input[type="radio"]:checked+label,
-  .Checked+label {
-    background: gray;
-  }
+}
 
-  .donate-now label:hover {
+.donate-now input[type="radio"]:checked+label,
+.Checked+label {
+    background: gray;
+}
+
+.donate-now label:hover {
     background: #DDD;
-  }
+}
+
+.container {
+    width: 100%;
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+.progressbar li {
+    list-style: none;
+    display: inline-block;
+    width: 25%;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    background-color: #fff;
+}
+
+.progressbar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    color: rgb(230, 131, 66);
+}
+
+.progressbar li.active:before {
+    border-color: rgb(230, 131, 66);
+}
+
+.progressbar li.active+li:after {
+    background-color: rgb(230, 131, 66);
+}
+
+#card {
+    width: 60%;
+    height: 80px;
+    border: 0.5px solid grey;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+#type {
+    text-align: left;
+    margin-top: 1px;
+    margin-left: 2px;
+    padding: 5px;
+    font-size: 25px;
+}
+
+#price {
+    float: right;
+    position: relative;
+    top: -23px;
+    right: 20px;
+    font-weight: bold;
+}
+
+#coverage {
+    float: left;
+    position: relative;
+    left: 8px;
+    font-size: 13px;
+}
+
+#year {
+    float: right;
+    font-size: 13px;
+    position: relative;
+    right: -63px;
+    top: 15px;
+}
+
+.button {
+    background-color: rgb(230, 131, 66);
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: relative;
+    top: -15px;
+}

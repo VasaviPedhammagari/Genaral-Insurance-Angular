@@ -1,20 +1,22 @@
 <div id="form">
-    <h2 style="font-weight: normal;">Welcome to Policy Insurance, login here!</h2>
+    <h2 style="font-weight: normal;">Welcome to Policy Insurance, enter your claim details here!</h2>
     <form [formGroup]="ClaimForm" (ngSubmit)="claimCheck()">
-
+        <div *ngIf = "Email">
+            <p style="text-align:left">Select your policy number</p>
+            <select name="policyNumber" formControlName="policyNumber" [(ngModel)]="policyNumber">
+             <option *ngFor="let policyNumber of policyNumberList" [value]="policyNumber">{{ policyNumber }}</option>
+             </select>   
+        </div> 
+        <div *ngIf = "!Email">
         <input type="number" name="policyNumber" placeholder="Enter Policy Number" formControlName="policyNumber" [(ngModel)]=claim.policyNumber><br>
+        </div>
         <div class="text-danger" *ngIf="ClaimForm.controls.policyNumber.touched && ClaimForm.controls.policyNumber.hasError('required')">
             Policy Number required
         </div>
 
-        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]=claim.email><br>
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email" [(ngModel)]="email"><br>
         <div class="text-danger" *ngIf="ClaimForm.controls.email.touched && ClaimForm.controls.email.hasError('required')">
             Email required
-        </div>
-
-        <input type="password" name="password" placeholder="Enter Password" formControlName="password" [(ngModel)]=claim.password><br>
-        <div class="text-danger" *ngIf="ClaimForm.controls.password.touched && ClaimForm.controls.password.hasError('required')">
-            Enter Password
         </div>
 
         <input type="text" name="claimReason" placeholder="Enter Claim Reason" formControlName="claimReason" [(ngModel)]=claim.claimReason><br>

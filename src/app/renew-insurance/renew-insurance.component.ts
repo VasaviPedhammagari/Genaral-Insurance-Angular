@@ -24,6 +24,7 @@ export class RenewInsuranceComponent implements OnInit {
   email: string;
   policyNumbers: number[];
   policyNumber: number;
+  Email: boolean;
 
   constructor(private fb:FormBuilder,private router:Router,private insuranceService: InsuranceService) { }
 
@@ -36,21 +37,29 @@ export class RenewInsuranceComponent implements OnInit {
     this.policyNumbers = JSON.parse(sessionStorage.getItem('policyNumbers') || '{}');
     this.phoneNo = parseInt(sessionStorage.getItem('mobileNumber') || '');
     this.email = sessionStorage.getItem('email') || '';
+    if(this.email === ''){
+      this.Email = false;
+    }
+    else{
+      this.Email = true;
+    }
   }
 
   checkDetails(data: any){
     alert("policy number : "+ data.policyNumber);
     alert("email id : "+data.email);
-    this.renewDetails.phoneNo = this.phoneNo;
+    if(this.Email){
+      this.renewDetails.phoneNo = this.phoneNo;
+    }
     this.renewDetails.email = this.email;
     this.renewDetails.policyNumber = this.policyNumber;
     this.insuranceService.renew(this.renewDetails).subscribe(response =>{
       //console.log(JSON.stringify(response));
       if(response.status == 'SUCCESS'){
         this.motorInsurance = response.motorInsurance;
-        this.vehicle = this.motorInsurance.vehicle;
+        //this.vehicle = this.motorInsurance.vehicle;
         this.user = this.motorInsurance.user;
-        sessionStorage.setItem( 'vehicle', JSON.stringify(this.vehicle));
+        //sessionStorage.setItem( 'vehicle', JSON.stringify(this.vehicle));
         sessionStorage.setItem( 'user', JSON.stringify(this.user));
         this.router.navigate(['choose-plan']);
       }else 

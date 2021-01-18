@@ -1,14 +1,23 @@
 <div id="form">
     <form [formGroup]="renewForm" (ngSubmit)="checkDetails(renewForm.value)">
-        <p style="text-align:left">Enter Policy Number</p>
+        <div *ngIf="Email">
+        <p style="text-align:left">Select Policy Number</p>
         <select name="policyNumber" formControlName="policyNumber" [(ngModel)] = "policyNumber">  
             <option *ngFor = "let policyNumber of policyNumbers" [value] = "policyNumber">{{ policyNumber }}</option>
         </select>
+        </div> 
+        <div *ngIf="!Email">
+        <input type="text" name="policyNumber" placeholder="Enter your policy number" formControlName="policyNumber" [(ngModel)] = "policyNumber"/>  
+        </div> 
         <div class="text-danger" *ngIf="renewForm.controls.policyNumber.touched && renewForm.controls.policyNumber.hasError('required')">
             policy number required
         </div>
-
+        <div *ngIf="Email">
         <input type="tel" name="phoneNo" placeholder="Enter Mobile Number" formControlName="phoneNumber" [(ngModel)]="phoneNo"/>
+        </div>
+        <div *ngIf="!Email">
+           <input type="tel" name="phoneNo" placeholder="Enter Mobile Number" formControlName="phoneNumber" [(ngModel)]="renewDetails.phoneNo"/>
+        </div>
         <div class="text-danger" *ngIf="renewForm.controls.phoneNumber.touched && renewForm.controls.phoneNumber.hasError('required')">
             Mobile number required
         </div>
