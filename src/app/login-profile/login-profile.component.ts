@@ -81,6 +81,7 @@ export class LoginProfileComponent implements OnInit {
         console.log(JSON.stringify(this.motorInsuranceList[i]));
         this.insuranceService.claimDetails(parseInt(this.motorInsuranceList[i].policyNumber)).subscribe(response => {
           this.insuranceClaimList = response;
+          console.log(this.insuranceClaimList);
           this.claimNumberList = new Array<number>(this.insuranceClaimList.length);
         })
         this.policyNumberList[i]=parseInt(this.motorInsuranceList[i].policyNumber);

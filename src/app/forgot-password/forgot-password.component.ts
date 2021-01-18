@@ -5,6 +5,7 @@ import { forgotdetails } from '../appmodel/forgot-password';
 import { ForgotPasswordService } from "../forgot-password.service";
 import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
+import { User } from '../appmodel/user';
 
 @Component({
   selector: 'app-forgot-password',
@@ -19,6 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ForgotpassForm: FormGroup;
   forgotP: forgotdetails = new forgotdetails();
+  user: User = new User();
 
   constructor(private fb:FormBuilder, private forgotPasswordService : ForgotPasswordService, private router: Router) { }
 
@@ -28,7 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
       otp: ["",Validators.compose([Validators.required])],
       newpass1: ["",Validators.compose([
           Validators.required,
-          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]'),
+          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,12}'),
           Validators.minLength(8)
          ])
       ],
@@ -38,7 +40,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   generateOtp(){
     alert('OTP Generated!');
-    this.forgotPasswordService.generateOtp(this.forgotP.email).subscribe(response =>{
+    this.forgotPasswordService.generateOtp(this.forgotP.emailId).subscribe(response =>{
       alert(JSON.stringify(response));
     })
   }
@@ -50,8 +52,11 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   forgotPass(){
+    alert(this.forgotP.emailId);
     if(this.forgotP.newpass1 == this.forgotP.password){
-      this.forgotPasswordService.forgotPassword(this.forgotP).subscribe(response => {
+      this.user.email = this.forgotP.emailId;
+      this.user.password = this.forgotP.password;
+      this.forgotPasswordService.forgotPassword(this.user).subscribe(response => {
         alert(JSON.stringify(response));
     })
       //this.router.navigate(['login']);
