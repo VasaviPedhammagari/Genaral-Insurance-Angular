@@ -43,6 +43,7 @@ export class PaymentComponent implements OnInit {
      console.log(JSON.stringify(response));
      this.paymentId = response.paymentId;
      sessionStorage.setItem('paymentId', String(this.paymentId));
+     sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
      this.router.navigate(['payment-summary']);
    })
  }
