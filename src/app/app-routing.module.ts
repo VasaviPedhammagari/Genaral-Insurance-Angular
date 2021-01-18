@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'login-profile', component: LoginProfileComponent},
   { path: 'logout', component: LogoutComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' },
-  { path: 'userdetails', component: UserDetailsComponent}
+  { path: 'userdetails', component: UserDetailsComponent},
   { path: 'update', component: UpdateProfileComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
