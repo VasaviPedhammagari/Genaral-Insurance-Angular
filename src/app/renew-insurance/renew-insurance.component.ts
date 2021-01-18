@@ -57,9 +57,9 @@ export class RenewInsuranceComponent implements OnInit {
       //console.log(JSON.stringify(response));
       if(response.status == 'SUCCESS'){
         this.motorInsurance = response.motorInsurance;
-        this.vehicle = this.motorInsurance.vehicle;
+        //this.vehicle = this.motorInsurance.vehicle;
         this.user = this.motorInsurance.user;
-        sessionStorage.setItem( 'vehicle', JSON.stringify(this.vehicle));
+        //sessionStorage.setItem( 'vehicle', JSON.stringify(this.vehicle));
         sessionStorage.setItem( 'user', JSON.stringify(this.user));
         this.router.navigate(['choose-plan']);
       }else 

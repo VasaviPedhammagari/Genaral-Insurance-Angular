@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
         alert(response.userName);
         sessionStorage.setItem('userName', response.userName);
         sessionStorage.setItem('userId', response.userId);
+        this.insuranceService.fetchUserDetails(response.userId).subscribe(response => {
+          alert('USER DETAILS'+JSON.stringify(response));
+          sessionStorage.setItem('user', JSON.stringify(response));
+        })
         this.router.navigate(['login-profile']).then( () => {
           window.location.reload();
         });

@@ -1,10 +1,10 @@
 <div class="row">
     <div class="column side">
-        <a routerLink="/update">Update my profile</a>
+        <ul><li><a routerLink="/update">Update my profile</a></li></ul>
         <h2>Your Details :</h2>
         <p>{{"User Id : " + userId }}<br>{{ "User Name : " + userName }}</p>
-        <h4>Your insurance policy details : </h4>
-        <table>
+        <h4 *ngIf="motorInsuranceList[0]">Your insurance policy details : </h4>
+        <table *ngIf="motorInsuranceList[0]">
             <tr>
                 <th>Policy Number</th>
                 <th>Vehicle Details</th>
@@ -25,8 +25,8 @@
             </tr>
         </table>
 
-        <h4>Your insurance claim details : </h4>
-        <table>
+        <h4 *ngIf="insuranceClaimList[0]">Your insurance claim details : </h4>
+        <table *ngIf="insuranceClaimList[0]">
             <tr>
                 <th>Claim Number</th>
                 <th>Claim Reason</th>

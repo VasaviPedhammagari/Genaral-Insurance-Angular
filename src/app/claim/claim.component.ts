@@ -5,6 +5,8 @@ import { CustomValidators } from 'ng2-validation';
 import { Claim } from '../appmodel/claim';
 import { InsuranceService } from '../insurance.service';
 
+
+
 @Component({
   selector: 'app-claim',
   templateUrl: './claim.component.html',
@@ -19,7 +21,8 @@ export class ClaimComponent implements OnInit {
   email : string;
   Email : boolean;
 
-  constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { }
+
+  constructor(private fb: FormBuilder,private router:Router, private insuranceService: InsuranceService) { }
 
   public ngOnInit(): void {
     this.policyNumberList = JSON.parse(sessionStorage.getItem('policyNumbers') || '{}');
@@ -37,6 +40,7 @@ export class ClaimComponent implements OnInit {
       claimAmount: ["",Validators.required]
   });
 }
+
 
 claimCheck(){
   if(this.Email){

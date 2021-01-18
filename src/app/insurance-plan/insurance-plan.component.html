@@ -7,41 +7,48 @@
     </ul>
 </div>
 <div id="form">
-    <form #planForm="ngForm" (ngSubmit)="saveData(planForm.value)">
+    <form (ngSubmit)="onSubmit(buttonType)">
 
         <div class="box">Plans</div><br>
-        <div class="box1">Choose your plan</div><br><br>
+        <div class="box1">Filer</div><br><br>
 
         <ul class="donate-now">
             <li>
-                <input type="radio" name="plan" value="Third Party Liability" id="thirdparty" ngModel/>
+                <input type="radio" name="plan" value="Third Party Liability" id="thirdparty" [(ngModel)]=type/>
                 <label for="thirdparty">Third Party Liability</label>
             </li>
             <li>
-                <input type="radio" name="plan" value="Comprehensive" id="comprehensive" ngModel/>
+                <input type="radio" name="plan" value="Comprehensive" id="comprehensive" [(ngModel)]=type/>
                 <label for="comprehensive">Comprehensive</label>
             </li>
         </ul>
         <br><br><br><br>
-        <div class="box1">Choose your plan term</div><br><br>
 
         <ul class="donate-now">
             <li>
-                <input type="radio" name="planTerm" value=1 id="oneyrplan" ngModel/>
-                <label for="oneyrplan">One Year Plan</label>
+                <input type="radio" name="planTerm" value=1 id="oneyrplan" [(ngModel)]=years/>
+                <label for="oneyrplan">One Year</label>
             </li>
-            <br><br><br>
             <li>
-                <input type="radio" name="planTerm" value=2 id="twoyrplan" ngModel/>
-                <label for="twoyrplan">Two Year Plan</label>
+                <input type="radio" name="planTerm" value=2 id="twoyrplan" [(ngModel)]=years/>
+                <label for="twoyrplan">Two Years</label>
             </li>
-            <br><br><br>
             <li>
-                <input type="radio" name="planTerm" value=3 id="threeyrplan" ngModel/>
-                <label for="threeyrplan">Three year Plan</label>
+                <input type="radio" name="planTerm" value=3 id="threeyrplan" [(ngModel)]=years/>
+                <label for="threeyrplan">Three Years</label>
             </li>
         </ul>
-        <br><br><br><br>
-        <input type="submit" value="Make Payment" />
+        <br><br><br><br><br>
+        <button class="button" type="submit" (click)="onSubmit('apply')">Apply Filter</button>
+        <button class="button" type="button" (click)="onSubmit('clear')">Clear Filter</button>
     </form>
+
+</div>
+<div id="form">
+    <div id="card" *ngFor="let item of appliedEstimates">
+        <div id="type">{{item.type}}</div>
+        <div id="price"><button class="button" (click)="onClickPrice(item.type, item.price, item.coverage, item.noOfYears)">₹{{item.price}}</button></div>
+        <div id="coverage">Total Coverage of:{{item.coverage}}</div>
+        <div id="year">Total years {{item.noOfYears}}</div>
+    </div>
 </div>
