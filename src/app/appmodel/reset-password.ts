@@ -1,5 +1,5 @@
 export class resetdetails{
-    oldpass: string;
+    email: string;
     newpass1:string;
-    newpass2:string;
+    password:string;
   }

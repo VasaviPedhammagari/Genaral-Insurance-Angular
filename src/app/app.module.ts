@@ -24,6 +24,7 @@ import { ValidateClaimComponent } from './validate-claim/validate-claim.componen
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -54,7 +55,8 @@ import { FooterComponent } from './footer/footer.component';
     AddVehicleComponent,
     LogoutComponent,
     UpdateProfileComponent,
-    FooterComponent
+    FooterComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

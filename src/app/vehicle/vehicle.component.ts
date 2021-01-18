@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 import { VehicleModel } from '../appmodel/vehicleModel';
+import { User } from '../appmodel/user';
 import { Estimate } from '../appmodel/estimate';
 import { MotorInsurance } from '../appmodel/motorInsurance';
-import { User } from '../appmodel/user';
+
 
 @Component({
   selector: 'app-vehicle',
@@ -40,7 +41,8 @@ export class VehicleComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    this.user =JSON.parse(sessionStorage.getItem('userDetails') || '{}');
+    console.log(this.user);
     this.insuranceService.fetchVehicleModels().subscribe(response => {
       this.vehicleModels = response;
       this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
@@ -79,8 +81,12 @@ export class VehicleComponent implements OnInit {
     console.log(JSON.stringify(this.vehicle));
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
+    this.vehicle.user = this.user;
+    console.log(JSON.stringify(this.vehicle));
+    alert(this.vehicle.user.userId);
     this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
       this.estimate = response;
+      alert("heloo");
       sessionStorage.setItem('estimateBuyInsurance', JSON.stringify(this.estimate));
     })
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {

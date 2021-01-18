@@ -2,6 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Estimate } from '../appmodel/estimate';
 import { MotorInsurance } from '../appmodel/motorInsurance';
 import { RenewDetails } from '../appmodel/renewDetails';
 import { User } from '../appmodel/user';
@@ -25,6 +26,7 @@ export class RenewInsuranceComponent implements OnInit {
   policyNumbers: number[];
   policyNumber: number;
   Email: boolean;
+  estimate: Estimate[];
 
   constructor(private fb:FormBuilder,private router:Router,private insuranceService: InsuranceService) { }
 
@@ -54,13 +56,18 @@ export class RenewInsuranceComponent implements OnInit {
     this.renewDetails.email = this.email;
     this.renewDetails.policyNumber = this.policyNumber;
     this.insuranceService.renew(this.renewDetails).subscribe(response =>{
-      //console.log(JSON.stringify(response));
+      console.log(JSON.stringify(response));
       if(response.status == 'SUCCESS'){
         this.motorInsurance = response.motorInsurance;
         this.vehicle = this.motorInsurance.vehicle;
         this.user = this.motorInsurance.user;
         sessionStorage.setItem( 'vehicle', JSON.stringify(this.vehicle));
         sessionStorage.setItem( 'user', JSON.stringify(this.user));
+        this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
+          this.estimate = response;
+          alert("heloo");
+          sessionStorage.setItem('estimateBuyInsurance', JSON.stringify(this.estimate));
+        })
         this.router.navigate(['choose-plan']);
       }else 
          alert(response.message);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Estimate } from '../appmodel/estimate';
 import { MotorInsurance } from '../appmodel/motorInsurance';
+import { Payment } from '../appmodel/payment';
 import { User } from '../appmodel/user';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
@@ -16,19 +17,23 @@ export class InsurancePlanComponent implements OnInit {
   motorInsurance: MotorInsurance = new MotorInsurance();
   vehicle: Vehicle = new Vehicle();
   user: User = new User();
+  payment : Payment = new Payment();
   estimate: Estimate[];
   appliedEstimates: Estimate[];
   type: string = '';
   years: string = '';
   buttonType: string;
 
+
   constructor(private router: Router, private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
-    this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
-    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    this.user = JSON.parse(sessionStorage.getItem('userDetails') || '{}');
     alert(JSON.stringify(this.user));
+    this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
+    console.log(JSON.stringify(this.vehicle));
     this.estimate = JSON.parse(sessionStorage.getItem('estimateBuyInsurance') || '{}');
+    console.log(JSON.stringify(this.estimate));
     this.appliedEstimates = this.estimate;
   }
 
@@ -54,11 +59,15 @@ export class InsurancePlanComponent implements OnInit {
     this.motorInsurance.noOfYrs = noOfYears;
     this.motorInsurance.vehicle = this.vehicle;
     this.motorInsurance.user = this.user;
+    console.log('user in motot'+JSON.stringify(this.motorInsurance.user));
     this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
       console.log(JSON.stringify(response));
       if (response.status == 'SUCCESS') {
-        this.motorInsurance = response.motorInsurance;
-        sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+        this.payment = response.payment;
+        this.motorInsurance = this.payment.motorInsurance;
+        alert(this.motorInsurance.policyNumber);
+        alert(this.motorInsurance.insurancePremium);
+        sessionStorage.setItem('payment', JSON.stringify(this.payment));
         this.router.navigate(['payment']);
       } else
         alert(response.message);

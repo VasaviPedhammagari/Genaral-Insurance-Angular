@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Vehicle{
     vehicleType:string;
     manufacturer:string;
@@ -7,4 +9,5 @@ export class Vehicle{
     regNo:string;
     engineNumber:string;
     chassisNumber:string;
+    user: User;
 }

@@ -23,7 +23,9 @@ export class PaymentComponent implements OnInit {
     sessionStorage.setItem('manufacturer', '');
     sessionStorage.setItem('model', '');
     sessionStorage.setItem('purchaseDate', '');
-    this.motorInsurance = JSON.parse(sessionStorage.getItem('motorInsurance') || '{}');
+    this.payment = JSON.parse(sessionStorage.getItem('payment') || '{}');
+    this.motorInsurance = this.payment.motorInsurance;
+    console.log(JSON.stringify(this.motorInsurance));
     this.PaymentForm = this.fb.group({
         paymentMode: ["",Validators.required],
         upiId:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
@@ -36,12 +38,13 @@ export class PaymentComponent implements OnInit {
  doPayment(){
    alert(this.payment.paymentMode);
    console.log(JSON.stringify(this.payment));
-   this.payment.insurancePrice = this.motorInsurance.insurancePremium;
-   this.payment.motorInsurance = this.motorInsurance;
+   //this.payment.insurancePrice = this.motorInsurance.insurancePremium;
+   //this.payment.motorInsurance = this.motorInsurance;
    this.insuranceService.payment(this.payment).subscribe(response =>{
      console.log(JSON.stringify(response));
      this.paymentId = response.paymentId;
      sessionStorage.setItem('paymentId', String(this.paymentId));
+     sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
      this.router.navigate(['payment-summary']);
    })
  }
