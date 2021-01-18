@@ -111,4 +111,8 @@ export class InsuranceService {
     return this.http.post(url, user);
   }
 
+  getVehiclesByUserId(userId : number) : Observable<any> {
+    let url ="http://localhost:8181/vehicledetails?userId="+userId;
+    return this.http.get(url);
+  }
 }

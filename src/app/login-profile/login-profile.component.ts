@@ -25,10 +25,25 @@ export class LoginProfileComponent implements OnInit {
   claimNumberList : Array<number>;
   policyNumberList : number[];
   user: User;
+  ifVehicle: boolean;
+  ifPayment: boolean;
+  ifChoosePlan : boolean;
 
   ngOnInit(): void {
     this.userId = parseInt(sessionStorage.getItem('userId') || '{}');
     this.userName = sessionStorage.getItem('userName') || '{}';
+    this.insuranceService.getVehiclesByUserId(this.userId).subscribe(response =>{
+        console.log(JSON.stringify(response));
+        if(response.message === "No pending in registration process" || response.message === "No vehicle is registered"){
+           this.ifVehicle = true;
+        }else if(response.message === "only vehicle registraion is done"){
+           this.ifChoosePlan = true;
+        }else if(response.message === "payment is pending"){
+          this.ifPayment = true;
+       }else if(response.message === "pending in more than one vehicle registraion"){
+        this.ifPayment = true;
+       }
+    })
     this.insuranceService.insuranceDetails(this.userId).subscribe(response => {
       this.motorInsuranceList = response;
       var sortedArray: MotorInsurance[] = this.motorInsuranceList.sort((obj1, obj2) => {​​

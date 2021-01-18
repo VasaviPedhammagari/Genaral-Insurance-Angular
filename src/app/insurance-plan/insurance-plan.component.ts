@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MotorInsurance } from '../appmodel/motorInsurance';
+import { Payment } from '../appmodel/payment';
 import { User } from '../appmodel/user';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
@@ -15,6 +16,7 @@ export class InsurancePlanComponent implements OnInit {
   motorInsurance: MotorInsurance = new MotorInsurance();
   vehicle: Vehicle = new Vehicle();
   user: User = new User();
+  payment : Payment = new Payment();
 
   constructor(private router: Router, private insuranceService: InsuranceService) { }
 
@@ -34,10 +36,11 @@ export class InsurancePlanComponent implements OnInit {
     this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
       console.log(JSON.stringify(response));
       if (response.status == 'SUCCESS') {
-        this.motorInsurance = response.motorInsurance;
+        this.payment = response.payment;
+        this.motorInsurance = this.payment.motorInsurance;
         alert(this.motorInsurance.policyNumber);
         alert(this.motorInsurance.insurancePremium);
-        sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+        sessionStorage.setItem('payment', JSON.stringify(this.payment));
         this.router.navigate(['payment']);
       } else
         alert(response.message);

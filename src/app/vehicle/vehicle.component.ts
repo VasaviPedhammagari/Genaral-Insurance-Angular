@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 import { VehicleModel } from '../appmodel/vehicleModel';
+import { User } from '../appmodel/user';
 
 @Component({
   selector: 'app-vehicle',
@@ -26,13 +27,14 @@ export class VehicleComponent implements OnInit {
   chosenCar: string = "";
   models: string = "";
   cars: string = "";
-
+  user : User = new User();
   price: number = 0;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
   }
 
   public ngOnInit(): void {
+    this.user =JSON.parse(sessionStorage.getItem('user') || '{}');
     this.insuranceService.fetchVehicleModels().subscribe(response => {
       this.vehicleModels = response;
       this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
@@ -68,6 +70,7 @@ export class VehicleComponent implements OnInit {
     console.log(JSON.stringify(this.vehicle));
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
+    this.vehicle.user = this.user;
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       console.log(this.vehicle.vehicleType);

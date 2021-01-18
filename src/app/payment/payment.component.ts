@@ -23,7 +23,8 @@ export class PaymentComponent implements OnInit {
     sessionStorage.setItem('manufacturer', '');
     sessionStorage.setItem('model', '');
     sessionStorage.setItem('purchaseDate', '');
-    this.motorInsurance = JSON.parse(sessionStorage.getItem('motorInsurance') || '{}');
+    this.payment = JSON.parse(sessionStorage.getItem('payment') || '{}');
+    this.motorInsurance = this.payment.motorInsurance;
     this.PaymentForm = this.fb.group({
         paymentMode: ["",Validators.required],
         upiId:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
