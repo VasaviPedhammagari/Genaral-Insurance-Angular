@@ -13,6 +13,8 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     sessionStorage.removeItem('userName');
     sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('mobileNumber');
+    sessionStorage.clear();
     this.router.navigate(['']).then( () => {
       window.location.reload();
     });

@@ -1,28 +1,36 @@
-<div id="form">
-<h4>Hello {{ uname }} ! Choose your vehicle here</h4>
-<form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()" novalidate>
-    <ul class="donate-now">
-        <li>
-            <input type="radio" name = "vehicleType" value="2-wheeler" id="2-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
-            <label for = "2-wheeler" > 2- Wheeler</label>
-        </li>
-        <li>
-            <input type="radio" name = "vehicleType" value="4-wheeler" id="4-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
-            <label for = "4-wheeler">4 - Wheeler</label>
-        </li>
+<div class="container">
+    <ul class="progressbar">
+        <li>Step 1 Register</li>
+        <li class="active">Step 2 Vehicle Info</li>
+        <li>Step 3 Choose Plan</li>
+        <li>Step 4 Payment</li>
     </ul>
-    <br><br><br><br>
+</div>
+<div id="form">
+    <h4>Hello {{ uname }} ! Choose your vehicle here</h4>
+    <form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()" novalidate>
+        <ul class="donate-now">
+            <li>
+                <input type="radio" name="vehicleType" value="2-wheeler" id="2-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
+                <label for="2-wheeler"> 2- Wheeler</label>
+            </li>
+            <li>
+                <input type="radio" name="vehicleType" value="4-wheeler" id="4-wheeler" formControlName="vehicleType" [(ngModel)]=vehicle.vehicleType/>
+                <label for="4-wheeler">4 - Wheeler</label>
+            </li>
+        </ul>
+        <br><br><br><br>
 
-    
-    <select name="models" id="models"  [(ngModel)]="chosenMod" formControlName="models" (ngModelChange)="modo()">
+
+        <select name="models" id="models" [(ngModel)]="chosenMod" formControlName="models" (ngModelChange)="modo()">
         <option *ngFor="let model of manufactureres" value="{{model}}">{{model}}</option>
-    </select> 
-    <br>
-    <select name="cars" id="cars" [(ngModel)]="chosenCar"  formControlName="cars">
+    </select>
+        <br>
+        <select name="cars" id="cars" [(ngModel)]="chosenCar" formControlName="cars">
         <option *ngFor="let car of carModels" value="{{car}}">{{car}}</option>
     </select>
 
-    <!-- <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer><br>
+        <!-- <input type="text" name="manufacturer" placeholder="Manufacturer" formControlName="manufacturer" [(ngModel)]=vehicle.manufacturer><br>
     <div class="text-danger" *ngIf="VehicleForm.controls.manufacturer.touched && VehicleForm.controls.manufacturer.hasError('required')">
         *Required
     </div>
@@ -31,37 +39,37 @@
     <div class="text-danger" *ngIf="VehicleForm.controls.model.touched && VehicleForm.controls.model.hasError('required')">
         *Required
     </div> -->
-    
-    <input type="text" name="license" placeholder="Driving License" style="text-transform:uppercase" formControlName="license" [(ngModel)]=vehicle.drivingLicense><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.license.touched && VehicleForm.controls.license.hasError('required')">
-        *Required
-    </div>
 
-    <input type="date" name="purchaseDate" placeholder="Purchase Date" formControlName="purchaseDate" [(ngModel)]=vehicle.purchaseDate><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.purchaseDate.touched && VehicleForm.controls.purchaseDate.hasError('required')">
-        *Required
-    </div>
+        <input type="text" name="license" placeholder="Driving License" style="text-transform:uppercase" formControlName="license" [(ngModel)]=vehicle.drivingLicense><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.license.touched && VehicleForm.controls.license.hasError('required')">
+            *Required
+        </div>
 
-    <input type="text" name="regno" placeholder="Registration Number" style="text-transform:uppercase" formControlName="regNo" [(ngModel)]=vehicle.regNo><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.regNo.touched && VehicleForm.controls.regNo.hasError('required')">
-        *Required
+        <input type="date" name="purchaseDate" placeholder="Purchase Date" formControlName="purchaseDate" [(ngModel)]=vehicle.purchaseDate><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.purchaseDate.touched && VehicleForm.controls.purchaseDate.hasError('required')">
+            *Required
+        </div>
 
-    </div>
-    <div class="text-danger" *ngIf="VehicleForm.controls.regNo.touched && VehicleForm.controls.regNo.hasError('pattern')">
-        Invalid Registration Number
-    </div>
+        <input type="text" name="regno" placeholder="Registration Number" style="text-transform:uppercase" formControlName="regNo" [(ngModel)]=vehicle.regNo><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.regNo.touched && VehicleForm.controls.regNo.hasError('required')">
+            *Required
 
-    <input type="text" name="engineno" placeholder="Engine Number" style="text-transform:uppercase" formControlName="engineno" [(ngModel)]=vehicle.engineNumber><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.engineno.touched && VehicleForm.controls.engineno.hasError('required')">
-        *Required
-    </div>
+        </div>
+        <div class="text-danger" *ngIf="VehicleForm.controls.regNo.touched && VehicleForm.controls.regNo.hasError('pattern')">
+            Invalid Registration Number
+        </div>
 
-    <input type="text" name="chassisno" placeholder="Chassis Number" style="text-transform:uppercase" formControlName="chassisno" [(ngModel)]=vehicle.chassisNumber><br>
-    <div class="text-danger" *ngIf="VehicleForm.controls.chassisno.touched && VehicleForm.controls.chassisno.hasError('required')">
-        *Required
-    </div>
+        <input type="text" name="engineno" placeholder="Engine Number" style="text-transform:uppercase" formControlName="engineno" [(ngModel)]=vehicle.engineNumber><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.engineno.touched && VehicleForm.controls.engineno.hasError('required')">
+            *Required
+        </div>
 
-    <input type="submit" value="Choose Plan">
+        <input type="text" name="chassisno" placeholder="Chassis Number" style="text-transform:uppercase" formControlName="chassisno" [(ngModel)]=vehicle.chassisNumber><br>
+        <div class="text-danger" *ngIf="VehicleForm.controls.chassisno.touched && VehicleForm.controls.chassisno.hasError('required')">
+            *Required
+        </div>
 
-</form>
+        <input type="submit" value="Choose Plan">
+
+    </form>
 </div>

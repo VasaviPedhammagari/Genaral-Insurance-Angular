@@ -105,4 +105,10 @@ export class InsuranceService {
     let url = "http://localhost:8181/listvehiclemodel";
     return this.http.get<VehicleModel>(url);
   }
+
+  updateProfile(user: User) :Observable<any> {
+    let url = "http://localhost:8181/update";
+    return this.http.post(url, user);
+  }
+
 }
