@@ -54,13 +54,10 @@ export class InsurancePlanComponent implements OnInit {
     this.motorInsurance.noOfYrs = noOfYears;
     this.motorInsurance.vehicle = this.vehicle;
     this.motorInsurance.user = this.user;
-    alert('user in motot'+JSON.stringify(this.motorInsurance.user));
     this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
       console.log(JSON.stringify(response));
       if (response.status == 'SUCCESS') {
         this.motorInsurance = response.motorInsurance;
-        alert(this.motorInsurance.policyNumber);
-        alert(this.motorInsurance.insurancePremium);
         sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
         this.router.navigate(['payment']);
       } else

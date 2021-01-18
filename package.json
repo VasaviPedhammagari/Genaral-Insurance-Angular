@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.3",
     "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.5.3",
+    "font-awesome": "^4.7.0",
     "ng-recaptcha": "^7.0.1",
     "ng2-validation": "^4.2.0",
     "ngx-bootstrap": "^6.2.0",

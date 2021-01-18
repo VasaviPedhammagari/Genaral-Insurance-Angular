@@ -16,11 +16,17 @@ export class RegisterComponent implements OnInit {
   RegForm:FormGroup;
   user:User = new User();
   address:Address = new Address();
+  user1: User;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
    }
 
   public ngOnInit(): void {
+    // this.user1 = JSON.parse(sessionStorage.getItem('user') || '{}');
+    if(sessionStorage['user']){
+      this.router.navigate(['vehicle-registration']);
+    }
+
     this.RegForm = this.fb.group({
       username: ["",Validators.required],
       email: ["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])],

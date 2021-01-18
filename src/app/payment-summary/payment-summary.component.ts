@@ -20,6 +20,8 @@ export class PaymentSummaryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('manufacturer');
+    sessionStorage.removeItem('model');
   }
 
 }

@@ -5,6 +5,8 @@ import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 import { VehicleModel } from '../appmodel/vehicleModel';
 import { Estimate } from '../appmodel/estimate';
+import { MotorInsurance } from '../appmodel/motorInsurance';
+import { User } from '../appmodel/user';
 
 @Component({
   selector: 'app-vehicle',
@@ -28,6 +30,9 @@ export class VehicleComponent implements OnInit {
   chosenCar: string = "";
   models: string = "";
   cars: string = "";
+  checkDiv: boolean = false;
+  motorInsurance: MotorInsurance = new MotorInsurance();
+  user: User = new User();
 
   price: number = 0;
 
@@ -35,11 +40,15 @@ export class VehicleComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
     this.insuranceService.fetchVehicleModels().subscribe(response => {
       this.vehicleModels = response;
       this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
       this.carModels = new Array<string>(this.vehicleModels.length);
     })   
+    if(sessionStorage['manufacturer']){
+      this.checkDiv = true;
+    }
     this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
     this.vehicle.model = sessionStorage.getItem('model') || '';
     this.vehicle.purchaseDate = sessionStorage.getItem('purchaseDate') || '';
@@ -82,6 +91,20 @@ export class VehicleComponent implements OnInit {
         sessionStorage.setItem('vehicle',JSON.stringify(this.vehicle));
         this.price = parseInt(sessionStorage.getItem('price') || '{}');
         if (this.price > 0) {
+          this.motorInsurance.vehicle = this.vehicle;
+          this.motorInsurance.user = this.user;
+          this.motorInsurance.planType = sessionStorage.getItem('type') || '';
+          this.motorInsurance.noOfYrs = parseInt(sessionStorage.getItem('noOfYears') || ''); 
+          sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+          this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
+            console.log(JSON.stringify(response));
+            if (response.status == 'SUCCESS') {
+              this.motorInsurance = response.motorInsurance;
+              sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+              this.router.navigate(['payment']);
+            } else
+              alert(response.message);
+          })
           this.router.navigate(['payment']);
         }
         else {
