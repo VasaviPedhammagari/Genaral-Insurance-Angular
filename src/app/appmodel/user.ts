@@ -1,4 +1,5 @@
 import { Address } from "./address";
+import { Vehicle } from "./vehicle";
 
 export class User{
   userId: number;

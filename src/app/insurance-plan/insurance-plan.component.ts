@@ -28,10 +28,12 @@ export class InsurancePlanComponent implements OnInit {
   constructor(private router: Router, private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
-    this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
     this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
     alert(JSON.stringify(this.user));
+    this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
+    console.log(JSON.stringify(this.vehicle));
     this.estimate = JSON.parse(sessionStorage.getItem('estimateBuyInsurance') || '{}');
+    console.log(JSON.stringify(this.estimate));
     this.appliedEstimates = this.estimate;
   }
 
@@ -57,7 +59,7 @@ export class InsurancePlanComponent implements OnInit {
     this.motorInsurance.noOfYrs = noOfYears;
     this.motorInsurance.vehicle = this.vehicle;
     this.motorInsurance.user = this.user;
-    alert('user in motot'+JSON.stringify(this.motorInsurance.user));
+    console.log('user in motot'+JSON.stringify(this.motorInsurance.user));
     this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
       console.log(JSON.stringify(response));
       if (response.status == 'SUCCESS') {

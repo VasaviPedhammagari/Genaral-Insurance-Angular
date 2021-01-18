@@ -3,6 +3,7 @@
         <ul><li><a routerLink="/update">Update my profile</a></li></ul>
         <h2>Your Details :</h2>
         <p>{{"User Id : " + userId }}<br>{{ "User Name : " + userName }}</p>
+        <div *ngIf = "ifInsurance">
         <h4 *ngIf="motorInsuranceList[0]">Your insurance policy details : </h4>
         <table *ngIf="motorInsuranceList[0]">
             <tr>
@@ -24,7 +25,7 @@
                 <td>{{ motorInsurance.balanceClaimAmount }}</td>
             </tr>
         </table>
-
+        
         <h4 *ngIf="insuranceClaimList[0]">Your insurance claim details : </h4>
         <table *ngIf="insuranceClaimList[0]">
             <tr>
@@ -44,13 +45,21 @@
                 <td>{{insuranceClaim.motorInsurance.policyNumber }}</td>
             </tr>
         </table>
-
+        </div>
     </div>
 
     <div class="column middle">
         <h2>Our Services</h2>
         <ul>
+            <div *ngIf="ifVehicle">
             <li><a routerLink="/vehicle-registration">Buy Insurance</a></li>
+            </div>
+            <div *ngIf="ifChoosePlan">
+                <li><a routerLink="/choose-plan">Choose your Insurance and complete the payment</a></li>
+            </div>
+            <div *ngIf="ifPayment">
+                <li><a routerLink="/payment">Complete your Payment</a></li>
+            </div>
             <li><a routerLink="/renew-insurance">Renew Insurance</a></li>
             <li><a routerLink="/claim">Claim Insurance</a></li>
             <li><a routerLink="/premium-calculate">Estimate Insurance Calculation</a></li>
