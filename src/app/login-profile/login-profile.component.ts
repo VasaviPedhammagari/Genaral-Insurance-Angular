@@ -55,6 +55,7 @@ export class LoginProfileComponent implements OnInit {
       sessionStorage.setItem('policyNumbers',JSON.stringify(this.policyNumberList));
       sessionStorage.setItem('email',this.user.email);
       sessionStorage.setItem('mobileNumber',String(this.user.phoneNo));
+      sessionStorage.setItem('userDetails', JSON.stringify(this.user));
       console.log(JSON.stringify(this.policyNumberList));
     })
   }
