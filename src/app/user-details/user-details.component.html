@@ -1,0 +1,25 @@
+<div id="form">
+    <button type="button" (click)="displayUserDetails()">View All</button>
+    <button type="button" (click)="backToAdminDash()">Back</button>
+    <div *ngIf="userList">
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>DOB</th>
+            <th>Phone</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userList">
+                <td>{{ user.userId }}</td>
+                <td>{{ user.userName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.dateOfBirth }}</td>
+                <td>{{ user.phoneNo }}</td>
+            </tr>
+        </tbody> 
+    </table> 
+    </div>
+</div>
+    

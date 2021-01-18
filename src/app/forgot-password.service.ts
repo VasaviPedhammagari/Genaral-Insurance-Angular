@@ -10,9 +10,22 @@ export class ForgotPasswordService {
 
   constructor(private http: HttpClient) { }
 
+    generateOtp(email: string) : Observable<any> {
+
+      let url = "http://localhost:8181/otp/generate";
+      return this.http.post(url, email);  
+    }
+
+    validateOtp(forgotP:forgotdetails) : Observable<any> {
+
+      let url = "http://localhost:8181/otp/validate";
+      return this.http.post(url, forgotP);  
+    }
+
     forgotPassword(forgotP: forgotdetails) : Observable<any> {
 
-        let url = "http://localhost:8181/forgotpassword";
-        return this.http.post(url, forgotP);  
-   }
+        let url = "http://localhost:8181/resetpassword";
+        return this.http.post(url, forgotP);
+    }
+
 }

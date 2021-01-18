@@ -19,6 +19,7 @@ import { ValidateClaimComponent } from './validate-claim/validate-claim.componen
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDetailsComponent } from "./user-details/user-details.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'addVehicle', component: AddVehicleComponent},
   { path: 'login-profile', component: LoginProfileComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: '', redirectTo: '/home', pathMatch:'full' }
+  { path: '', redirectTo: '/home', pathMatch:'full' },
+  { path: 'userdetails', component: UserDetailsComponent}
 ];
 
 @NgModule({
@@ -53,4 +55,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [RegisterComponent, VehicleComponent, LoginComponent, InsurancePlanComponent, PaymentComponent,
                                     ResetPasswordComponent, ForgotPasswordComponent, PaymentSummaryComponent, AdminLoginComponent,
-                                     AdminDashboardComponent, RenewInsuranceComponent, ClaimComponent, LoginProfileComponent]
+                                     AdminDashboardComponent, RenewInsuranceComponent, ClaimComponent, LoginProfileComponent, UserDetailsComponent]
