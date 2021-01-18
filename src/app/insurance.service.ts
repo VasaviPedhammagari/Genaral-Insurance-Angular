@@ -111,4 +111,9 @@ export class InsuranceService {
     return this.http.post(url, user);
   }
 
+  fetchUserDetails(userId : number) : Observable<User> {
+    let url = "http://localhost:8181/user-details?userId="+userId;
+    return this.http.get<User>(url);
+  }
+
 }

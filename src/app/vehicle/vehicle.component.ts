@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Vehicle } from '../appmodel/vehicle';
 import { InsuranceService } from '../insurance.service';
 import { VehicleModel } from '../appmodel/vehicleModel';
+import { Estimate } from '../appmodel/estimate';
 
 @Component({
   selector: 'app-vehicle',
@@ -21,6 +22,7 @@ export class VehicleComponent implements OnInit {
 
   vehicleModels: VehicleModel[];
   manufactureres: string[];
+  estimate: Estimate[];
   carModels: Array<string>;
   chosenMod: string = "";
   chosenCar: string = "";
@@ -68,6 +70,10 @@ export class VehicleComponent implements OnInit {
     console.log(JSON.stringify(this.vehicle));
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
+    this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
+      this.estimate = response;
+      sessionStorage.setItem('estimateBuyInsurance', JSON.stringify(this.estimate));
+    })
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       console.log(this.vehicle.vehicleType);
