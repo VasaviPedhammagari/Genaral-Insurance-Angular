@@ -55,8 +55,8 @@ export class VehicleComponent implements OnInit {
     });
   }
   modo() {
-    alert(this.chosenMod);
-    alert(this.chosenCar);
+      alert(this.chosenMod);
+      alert(this.chosenCar);
     for (var i = 0; i < this.vehicleModels.length; i++) {
       if (this.vehicleModels[i].manufacturer == this.chosenMod) {
         this.carModels.push(this.vehicleModels[i].model);
