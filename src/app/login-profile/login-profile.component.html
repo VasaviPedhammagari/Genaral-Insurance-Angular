@@ -1,28 +1,47 @@
 <div class="row">
     <div class="column side">
+        <a routerLink="/update">Update my profile</a>
         <h2>Your Details :</h2>
         <p>{{"User Id : " + userId }}<br>{{ "User Name : " + userName }}</p>
         <h4>Your insurance policy details : </h4>
         <table>
             <tr>
-                <th>Poilcy Number</th>
+                <th>Policy Number</th>
                 <th>Vehicle Details</th>
                 <th>Insurance Plan Type</th>
-                <th>Insurance Plan Term</th>               
+                <th>Insurance Plan Term</th>
                 <th>Plan Expiry Date</th>
                 <th>Premium</th>
                 <th>Balance Claim Amount</th>
             </tr>
-            <tr  *ngFor="let motorInsurance of motorInsuranceList">
+            <tr *ngFor="let motorInsurance of motorInsuranceList">
                 <td>{{ motorInsurance.policyNumber }}</td>
-                <td>{{ motorInsurance.vehicle.regNo}}<br> 
-                    {{ motorInsurance.vehicle.manufacturer }} <br> 
-                    {{ motorInsurance.vehicle.model }}</td>
+                <td>{{ motorInsurance.vehicle.regNo}}<br> {{ motorInsurance.vehicle.manufacturer }} <br> {{ motorInsurance.vehicle.model }}</td>
                 <td>{{ motorInsurance.planType }}</td>
-                <td>{{ motorInsurance.noOfYrs }}</td>               
+                <td>{{ motorInsurance.noOfYrs }}</td>
                 <td>{{ motorInsurance.planExpiryDate }}</td>
                 <td>{{ motorInsurance.insurancePremium }}</td>
                 <td>{{ motorInsurance.balanceClaimAmount }}</td>
+            </tr>
+        </table>
+
+        <h4>Your insurance claim details : </h4>
+        <table>
+            <tr>
+                <th>Claim Number</th>
+                <th>Claim Reason</th>
+                <th>Claim Date</th>
+                <th>Claim Status</th>
+                <th>Claim Amount</th>
+                <th>Policy Number</th>
+            </tr>
+            <tr *ngFor="let insuranceClaim of insuranceClaimList">
+                <td>{{ insuranceClaim.claimNumber }}</td>
+                <td>{{ insuranceClaim.claimReason }}</td>
+                <td>{{ insuranceClaim.claimDate }}</td>
+                <td>{{ insuranceClaim.claimStatus }}</td>
+                <td>{{ insuranceClaim.claimAmount }}</td>
+                <td>{{insuranceClaim.motorInsurance.policyNumber }}</td>
             </tr>
         </table>
 
