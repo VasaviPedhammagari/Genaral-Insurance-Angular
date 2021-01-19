@@ -22,6 +22,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminLogoutComponent } from './admin-logout/admin-logout.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'userdetails', component: UserDetailsComponent},
   { path: 'update', component: UpdateProfileComponent},
   { path: 'about', component: AboutUsComponent},
+  { path: 'adminLogout', component: AdminLogoutComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 

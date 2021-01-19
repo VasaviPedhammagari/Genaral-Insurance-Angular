@@ -28,6 +28,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminLogoutComponent } from './admin-logout/admin-logout.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     UpdateProfileComponent,
     FooterComponent,
     UserDetailsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    AdminLogoutComponent
   ],
   imports: [
     BrowserModule,
