@@ -41,14 +41,14 @@ export class VehicleComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.user =JSON.parse(sessionStorage.getItem('userDetails') || '{}');
+    this.user = JSON.parse(sessionStorage.getItem('userDetails') || '{}');
     console.log(this.user);
     this.insuranceService.fetchVehicleModels().subscribe(response => {
       this.vehicleModels = response;
       this.manufactureres = [...new Set(this.vehicleModels.map(x => x.manufacturer))];
       this.carModels = new Array<string>(this.vehicleModels.length);
-    })   
-    if(sessionStorage['manufacturer']){
+    })
+    if (sessionStorage['manufacturer']) {
       this.checkDiv = true;
     }
     this.vehicle.manufacturer = sessionStorage.getItem('manufacturer') || '';
@@ -75,7 +75,7 @@ export class VehicleComponent implements OnInit {
     }
     this.carModels = this.carModels.filter(x => x != null) as string[];
   }
-  saveVehicle(){
+  saveVehicle() {
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
     console.log(JSON.stringify(this.vehicle));
@@ -83,24 +83,22 @@ export class VehicleComponent implements OnInit {
     this.vehicle.model = this.chosenCar;
     this.vehicle.user = this.user;
     console.log(JSON.stringify(this.vehicle));
-    alert(this.vehicle.user.userId);
     this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
       this.estimate = response;
-      alert("heloo");
       sessionStorage.setItem('estimateBuyInsurance', JSON.stringify(this.estimate));
     })
     this.insuranceService.registerVehicle(this.vehicle).subscribe(response => {
       console.log(JSON.stringify(response));
       console.log(this.vehicle.vehicleType);
-      if(response.status == 'SUCCESS') {
+      if (response.status == 'SUCCESS') {
         this.vehicle = response.vehicle;
-        sessionStorage.setItem('vehicle',JSON.stringify(this.vehicle));
+        sessionStorage.setItem('vehicle', JSON.stringify(this.vehicle));
         this.price = parseInt(sessionStorage.getItem('price') || '{}');
         if (this.price > 0) {
           this.motorInsurance.vehicle = this.vehicle;
           this.motorInsurance.user = this.user;
           this.motorInsurance.planType = sessionStorage.getItem('type') || '';
-          this.motorInsurance.noOfYrs = parseInt(sessionStorage.getItem('noOfYears') || ''); 
+          this.motorInsurance.noOfYrs = parseInt(sessionStorage.getItem('noOfYears') || '');
           sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
           this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
             console.log(JSON.stringify(response));
@@ -115,10 +113,10 @@ export class VehicleComponent implements OnInit {
         }
         else {
           this.router.navigate(['choose-plan']);
-        }        
+        }
       }
       else
-          alert(response.message);
-    })    
+        alert(response.message);
+    })
   }
 }

@@ -17,7 +17,7 @@ export class InsurancePlanComponent implements OnInit {
   motorInsurance: MotorInsurance = new MotorInsurance();
   vehicle: Vehicle = new Vehicle();
   user: User = new User();
-  payment : Payment = new Payment();
+  payment: Payment = new Payment();
   estimate: Estimate[];
   appliedEstimates: Estimate[];
   type: string = '';
@@ -29,7 +29,6 @@ export class InsurancePlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('userDetails') || '{}');
-    alert(JSON.stringify(this.user));
     this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
     console.log(JSON.stringify(this.vehicle));
     this.estimate = JSON.parse(sessionStorage.getItem('estimateBuyInsurance') || '{}');
@@ -59,17 +58,16 @@ export class InsurancePlanComponent implements OnInit {
     this.motorInsurance.noOfYrs = noOfYears;
     this.motorInsurance.vehicle = this.vehicle;
     this.motorInsurance.user = this.user;
-    console.log('user in motot'+JSON.stringify(this.motorInsurance.user));
+    console.log('user in motot' + JSON.stringify(this.motorInsurance.user));
     this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
       console.log(JSON.stringify(response));
       if (response.status == 'SUCCESS') {
         this.payment = response.payment;
         this.motorInsurance = this.payment.motorInsurance;
-        alert(this.motorInsurance.policyNumber);
-        alert(this.motorInsurance.insurancePremium);
         sessionStorage.setItem('payment', JSON.stringify(this.payment));
         this.router.navigate(['payment']);
-      } else
+      }
+      else
         alert(response.message);
     })
   }

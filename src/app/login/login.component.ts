@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { }
 
   public ngOnInit(): void {
+    if (sessionStorage['user']) {
+      this.router.navigate(['vehicle-registration']);
+    }
     this.LoginForm = this.fb.group({
       email: ["",Validators.compose([Validators.required, CustomValidators.email])],
       password: ["",Validators.required]
@@ -25,10 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginCheck(){
-    alert(JSON.stringify(this.login));
     this.insuranceService.login(this.login).subscribe(response =>{
       if(response.status === 'SUCCESS'){
-        alert(response.userName);
         sessionStorage.setItem('userName', response.userName);
         sessionStorage.setItem('userId', response.userId);
         this.insuranceService.fetchUserDetails(response.userId).subscribe(response => {

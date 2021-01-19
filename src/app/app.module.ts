@@ -27,6 +27,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FooterComponent } from './footer/footer.component';
     LogoutComponent,
     UpdateProfileComponent,
     FooterComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

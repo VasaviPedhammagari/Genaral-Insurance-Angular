@@ -21,6 +21,7 @@ import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
   { path: 'userdetails', component: UserDetailsComponent},
   { path: 'update', component: UpdateProfileComponent},
+  { path: 'about', component: AboutUsComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }
 ];
 
