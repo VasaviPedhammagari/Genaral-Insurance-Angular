@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
       this.resetPasswordService.resetPassword(this.resetP).subscribe(response => {
         alert(JSON.stringify(response));
     })
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
     }
     else{
       alert("The Passwords do not match.");
