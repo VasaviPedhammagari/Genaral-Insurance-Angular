@@ -47,6 +47,9 @@ export class PremiumCalulatorComponent implements OnInit {
     this.vehicle.manufacturer = this.chosenMod;
     this.vehicle.model = this.chosenCar;
     this.vehicle.purchaseDate = this.purchaseDate;
+    sessionStorage.setItem('manufacturer', this.vehicle.manufacturer);
+    sessionStorage.setItem('model', this.vehicle.model);
+    sessionStorage.setItem('purchaseDate', this.vehicle.purchaseDate);
     this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
       this.estimate = response;
       sessionStorage.setItem('estimate', JSON.stringify(this.estimate));

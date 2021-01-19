@@ -16,6 +16,7 @@
             <div id="userName">Welcome {{userName}}</div>
         </li>
         <li *ngIf="!ifUsername" style="float: right;"><a routerLink="adminLogin">Admin login</a></li>
+        <!-- <li *ngIf="ifAdmin" style="float: right;"><a routerLink="adminLogin">Admin logout</a></li> -->
         <li *ngIf="!ifUsername" style="float: right;"><a routerLink="register">Sign Up/Register</a></li>
         <li *ngIf="ifUsername" style="float: right;"><a routerLink="logout">Logout</a></li>
     </ul>

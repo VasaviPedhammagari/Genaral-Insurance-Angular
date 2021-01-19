@@ -20,7 +20,14 @@ export class ShowPlansComponent implements OnInit {
   }
 
   onClickPrice(type:string, price:number, coverage:number, noOfYears:number){
-    
+    sessionStorage.setItem('type', type);
+    sessionStorage.setItem('price', String(price));
+    sessionStorage.setItem('coverage', String(coverage));
+    sessionStorage.setItem('noOfYears', String(noOfYears));
+    sessionStorage.getItem('manufacturer');
+    sessionStorage.getItem('model');
+    sessionStorage.getItem('user');
+    this.router.navigate(['register']);
   }
 
 }

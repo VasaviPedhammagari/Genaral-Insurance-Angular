@@ -10,8 +10,15 @@ export class AppComponent {
 
   userName: string;
   ifUsername: boolean;
+  ifAdmin: boolean;
 
   ngOnInit() {
+    if(sessionStorage['adminLogin']){
+      this.ifAdmin = true;
+    }
+    else{
+      this.ifAdmin = false;
+    }
     this.userName = sessionStorage.getItem('userName') || '';
     if(this.userName === ''){
       this.ifUsername = false;

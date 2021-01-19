@@ -7,6 +7,7 @@ import { VehicleModel } from '../appmodel/vehicleModel';
 import { User } from '../appmodel/user';
 import { Estimate } from '../appmodel/estimate';
 import { MotorInsurance } from '../appmodel/motorInsurance';
+import { Payment } from '../appmodel/payment';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class VehicleComponent implements OnInit {
   user: User = new User();
 
   price: number = 0;
+  payment: Payment;
 
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) {
   }
@@ -76,11 +78,11 @@ export class VehicleComponent implements OnInit {
     this.carModels = this.carModels.filter(x => x != null) as string[];
   }
   saveVehicle() {
-    this.vehicle.manufacturer = this.chosenMod;
-    this.vehicle.model = this.chosenCar;
+    if(!this.checkDiv){
+      this.vehicle.manufacturer = this.chosenMod;
+      this.vehicle.model = this.chosenCar;
+    }
     console.log(JSON.stringify(this.vehicle));
-    this.vehicle.manufacturer = this.chosenMod;
-    this.vehicle.model = this.chosenCar;
     this.vehicle.user = this.user;
     console.log(JSON.stringify(this.vehicle));
     this.insuranceService.fetchPremiums(this.vehicle).subscribe(response => {
@@ -103,13 +105,14 @@ export class VehicleComponent implements OnInit {
           this.insuranceService.choosePlan(this.motorInsurance).subscribe(response => {
             console.log(JSON.stringify(response));
             if (response.status == 'SUCCESS') {
-              this.motorInsurance = response.motorInsurance;
-              sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+              this.payment = response.payment;
+              console.log(JSON.stringify(this.payment));
+              sessionStorage.setItem('payment', JSON.stringify(this.payment));
               this.router.navigate(['payment']);
             } else
               alert(response.message);
           })
-          this.router.navigate(['payment']);
+          // this.router.navigate(['payment']);
         }
         else {
           this.router.navigate(['choose-plan']);

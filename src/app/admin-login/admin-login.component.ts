@@ -29,6 +29,7 @@ export class AdminLoginComponent implements OnInit {
     this.insuranceService.adminlogin(this.adminLogin).subscribe(response =>{
       alert(JSON.stringify(response));
       if(response.status === 'SUCCESS'){
+        sessionStorage.setItem('adminLogin', 'Admin');
         this.router.navigate(['/admindash']);
       }
     })

@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
           window.location.reload();
         });
       }
+      else
+        alert(response.message);
     })
   }
 }
