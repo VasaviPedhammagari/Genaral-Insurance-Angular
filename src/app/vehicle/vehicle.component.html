@@ -7,7 +7,7 @@
     </ul>
 </div>
 <div id="form">
-    <h4>Hello {{ uname }} ! Choose your vehicle here</h4>
+    <h4>Hello {{ user.userName }} ! Choose your vehicle here</h4>
     <form [formGroup]="VehicleForm" (ngSubmit)="saveVehicle()" novalidate>
         <ul class="donate-now">
             <li>
