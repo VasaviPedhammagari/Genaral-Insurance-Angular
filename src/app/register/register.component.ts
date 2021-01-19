@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
           alert(response.message);
           this.user = response.user;
           sessionStorage.setItem('userDetails', JSON.stringify(this.user));
-          this.router.navigate(['vehicle-registration']);
+          this.router.navigate(['login']);
         }
         else
           alert(response.message);
