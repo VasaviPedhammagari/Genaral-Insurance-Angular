@@ -28,7 +28,7 @@ export class InsurancePlanComponent implements OnInit {
   constructor(private router: Router, private insuranceService: InsuranceService) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    this.user = JSON.parse(sessionStorage.getItem('userDetails') || '{}');
     alert(JSON.stringify(this.user));
     this.vehicle = JSON.parse(sessionStorage.getItem('vehicle') || '{}');
     console.log(JSON.stringify(this.vehicle));

@@ -10,6 +10,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    //window.location.reload();
   }
 
 }

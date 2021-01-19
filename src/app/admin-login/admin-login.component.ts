@@ -18,6 +18,8 @@ export class AdminLoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private insuranceService: InsuranceService, private router: Router) { }
 
   public ngOnInit(): void {
+    sessionStorage.removeItem('admin');
+    //window.location.reload();
     this.LoginForm = this.fb.group({
       email: ["",Validators.compose([Validators.required, CustomValidators.email])],
       password: ["",Validators.required]
@@ -29,7 +31,10 @@ export class AdminLoginComponent implements OnInit {
     this.insuranceService.adminlogin(this.adminLogin).subscribe(response =>{
       alert(JSON.stringify(response));
       if(response.status === 'SUCCESS'){
-        this.router.navigate(['/admindash']);
+        sessionStorage.setItem('admin', "Admin");
+        this.router.navigate(['/admindash']).then( () => {
+          window.location.reload();
+        })
       }
     })
   }
