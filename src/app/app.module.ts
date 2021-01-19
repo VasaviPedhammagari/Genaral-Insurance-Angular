@@ -26,6 +26,8 @@ import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +55,10 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     ValidateClaimComponent,
     AddVehicleComponent,
     LogoutComponent,
-    UserDetailsComponent,
     UpdateProfileComponent,
+    FooterComponent,
+    UserDetailsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

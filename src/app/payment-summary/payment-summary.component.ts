@@ -12,14 +12,16 @@ export class PaymentSummaryComponent implements OnInit {
   paymentId: number;
   motorInsurance: MotorInsurance = new MotorInsurance();
   vehicle: Vehicle = new Vehicle();
-  user : User = new User();
+  user: User = new User();
 
-  constructor() { 
+  constructor() {
     this.paymentId = parseInt(sessionStorage.getItem('paymentId') || '{}');
     this.motorInsurance = JSON.parse(sessionStorage.getItem('motorInsurance') || '{}');
   }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('manufacturer');
+    sessionStorage.removeItem('model');
   }
 
 }

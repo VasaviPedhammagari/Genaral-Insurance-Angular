@@ -12,7 +12,7 @@ import { InsuranceService } from '../insurance.service';
 })
 export class PaymentComponent implements OnInit {
 
-  PaymentForm:FormGroup;
+  PaymentForm: FormGroup;
   payment: Payment = new Payment();
   motorInsurance: MotorInsurance = new MotorInsurance();
   paymentId: number;
@@ -27,25 +27,22 @@ export class PaymentComponent implements OnInit {
     this.motorInsurance = this.payment.motorInsurance;
     console.log(JSON.stringify(this.motorInsurance));
     this.PaymentForm = this.fb.group({
-        paymentMode: ["",Validators.required],
-        upiId:["",Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
-        cardNumber: ["",Validators.compose([Validators.required,Validators.pattern(/^\d{16}$/)])],
-        cardHolderName:["",Validators.required],
-        expiryDate:["",Validators.required],
-        cvv:["",Validators.compose([Validators.required,Validators.pattern(/^\d{3}$/)])]
+      paymentMode: ["", Validators.required],
+      upiId: ["", Validators.compose([Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]{2,}$/)])],
+      cardNumber: ["", Validators.compose([Validators.required, Validators.pattern(/^\d{16}$/)])],
+      cardHolderName: ["", Validators.required],
+      expiryDate: ["", Validators.required],
+      cvv: ["", Validators.compose([Validators.required, Validators.pattern(/^\d{3}$/)])]
     });
   }
- doPayment(){
-   alert(this.payment.paymentMode);
-   console.log(JSON.stringify(this.payment));
-   //this.payment.insurancePrice = this.motorInsurance.insurancePremium;
-   //this.payment.motorInsurance = this.motorInsurance;
-   this.insuranceService.payment(this.payment).subscribe(response =>{
-     console.log(JSON.stringify(response));
-     this.paymentId = response.paymentId;
-     sessionStorage.setItem('paymentId', String(this.paymentId));
-     sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
-     this.router.navigate(['payment-summary']);
-   })
- }
+  doPayment() {
+    console.log(JSON.stringify(this.payment));
+    this.insuranceService.payment(this.payment).subscribe(response => {
+      console.log(JSON.stringify(response));
+      this.paymentId = response.paymentId;
+      sessionStorage.setItem('paymentId', String(this.paymentId));
+      sessionStorage.setItem('motorInsurance', JSON.stringify(this.motorInsurance));
+      this.router.navigate(['payment-summary']);
+    })
+  }
 }

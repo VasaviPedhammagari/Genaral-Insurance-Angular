@@ -1,6 +1,6 @@
 export class forgotdetails{
-    email: string;
-    otp: number;
+    emailId: string;
+    otpNumber: number;
     newpass1:string;
     password:string;
   }
